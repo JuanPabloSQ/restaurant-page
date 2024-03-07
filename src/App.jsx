@@ -1,10 +1,12 @@
 import './App.css';
-import ResponsiveAppBar from '../src/header/navbar';
+import NavBar from '../src/header/navbar';
+import SwipeableTextMobileStepper from '../src/bodypage/carousel';
 
 function App() {
   return (
     <div>
-      <ResponsiveAppBar />
+      <NavBar />
+      <SwipeableTextMobileStepper />
     </div>
   );
 }
