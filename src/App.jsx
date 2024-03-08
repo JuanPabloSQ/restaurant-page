@@ -3,6 +3,7 @@ import NavBar from '../src/header/navbar';
 import Carousel from '../src/bodypage/carousel';
 import BasicCard from './bodypage/BasicCard';
 import Box from '@mui/material/Box';
+import BoxFooter from './footer/FooterBar';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <BasicCard />
         <Carousel />
       </Box>
+      <BoxFooter/>
     </div>
   );
 }
