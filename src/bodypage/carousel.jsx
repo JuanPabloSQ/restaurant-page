@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {useState} from 'react';
 import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import MobileStepper from '@mui/material/MobileStepper';
@@ -35,9 +35,9 @@ const images = [
   },
 ];
 
-function SwipeableTextMobileStepper() {
+function Carousel() {
   const theme = useTheme();
-  const [activeStep, setActiveStep] = React.useState(0);
+  const [activeStep, setActiveStep] = useState(0);
   const maxSteps = images.length;
 
   const handleNext = () => {
@@ -125,4 +125,4 @@ function SwipeableTextMobileStepper() {
   );
 }
 
-export default SwipeableTextMobileStepper;
+export default Carousel;
