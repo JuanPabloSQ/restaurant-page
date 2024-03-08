@@ -16,7 +16,7 @@ const bull = (
 
 export default function BasicCard() {
   return (
-    <Card sx={{ minWidth: 275, width: '400px' }}>
+    <Card sx={{ minWidth: 275, width: '700px', height: '578px' }}>
       <CardContent>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
           Word of the Day

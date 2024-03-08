@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import { useState } from 'react';
 import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import MobileStepper from '@mui/material/MobileStepper';
@@ -53,15 +53,15 @@ function Carousel() {
   };
 
   return (
-    <Box sx={{ maxWidth: 400, flexGrow: 1 }}>
+    <Box sx={{ maxWidth: 700, height: '60vh', flexGrow: 1 }}>
       <Paper
         square
         elevation={0}
         sx={{
           display: 'flex',
           alignItems: 'center',
-          height: 50,
-          pl: 2,
+          justifyContent: 'center',
+          height: '20%', // Ajusta el tamaño del área del label
           bgcolor: 'background.default',
         }}
       >
@@ -74,22 +74,27 @@ function Carousel() {
         enableMouseEvents
       >
         {images.map((step, index) => (
-          <div key={step.label}>
-            {Math.abs(activeStep - index) <= 2 ? (
-              <Box
-                component="img"
-                sx={{
-                  height: 255,
-                  display: 'block',
-                  maxWidth: 400,
-                  overflow: 'hidden',
-                  width: '100%',
-                }}
+          <Box
+            key={step.label}
+            sx={{
+              height: '100%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
+            {Math.abs(activeStep - index) <= 2 && (
+              <img
                 src={step.imgPath}
                 alt={step.label}
+                style={{
+                  width: '100%',
+                  maxHeight: '100%',
+                  objectFit: 'contain',
+                }}
               />
-            ) : null}
-          </div>
+            )}
+          </Box>
         ))}
       </AutoPlaySwipeableViews>
       <MobileStepper
