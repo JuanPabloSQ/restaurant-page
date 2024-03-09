@@ -2,6 +2,7 @@ import NavBar from "../utils/navbar";
 import BoxFooter from "../utils/BoxFooter";
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
+import BasicDatePicker from "../ReservePage/BasicDatePicker"
 
 const Reserve = () => {
   return (
@@ -34,7 +35,7 @@ const Reserve = () => {
           <TextField fullWidth id="outlined-basic" label="Outlined" variant="outlined" />
         </Grid>
         <Grid item xs={12}>
-          <TextField fullWidth id="outlined-basic" label="Outlined" variant="outlined" />
+          <BasicDatePicker/>
         </Grid>
         <Grid item xs={12}>
           <TextField fullWidth id="outlined-basic" label="Outlined" variant="outlined" />
