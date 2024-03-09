@@ -11,11 +11,12 @@ export default function BoxFooter() {
       left={0}
       right={0}
       bottom={0}
-      padding={2}
+      padding={1}
       display="flex"
       flexDirection="row"
       justifyContent="center"
       alignItems="flex-end"
+      backgroundColor="#333"
     >
       <Box display="flex" alignItems="center" mr={2}>
         <EmailIcon />

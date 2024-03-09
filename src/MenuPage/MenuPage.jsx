@@ -35,11 +35,13 @@ const Menu = () => {
         <NavBar />
       </Grid>
       <Grid 
-      display="flex" 
-      justifyContent="center" 
-      alignItems="center"container 
-      spacing={2} 
-      style={{ marginLeft: '10px', marginTop: "80px", marginBottom: "20px" }} >
+        display="flex" 
+        justifyContent="center" 
+        alignItems="center"
+        container 
+        spacing={2} 
+        style={{ marginLeft: '10px', marginTop: "80px", marginBottom: "20px" }} 
+      >
         {menu.map((menuItem, index) => (
           <Grid item key={index} xs={12} sm={6} md={4}>
             <ImageCard
@@ -51,8 +53,8 @@ const Menu = () => {
             />
           </Grid>
         ))}
-      <BoxFooter />
       </Grid>
+      <BoxFooter />
     </div>
   );
 };
