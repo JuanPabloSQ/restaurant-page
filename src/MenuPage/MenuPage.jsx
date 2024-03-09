@@ -4,6 +4,7 @@ import { db } from "../firebase";
 import { collection, getDocs } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 import Grid from '@mui/material/Grid';
+import BoxFooter from '../utils/BoxFooter';
 
 const Menu = () => {
   const [menu, setMenu] = useState([]);
@@ -30,10 +31,17 @@ const Menu = () => {
 
   return (
     <div>
-      <NavBar />
-      <Grid container spacing={2} justifyContent="center">
+      <Grid>
+        <NavBar />
+      </Grid>
+      <Grid 
+      display="flex" 
+      justifyContent="center" 
+      alignItems="center"container 
+      spacing={2} 
+      style={{ marginLeft: '10px', marginTop: "80px", marginBottom: "20px" }} >
         {menu.map((menuItem, index) => (
-          <Grid item key={index}>
+          <Grid item key={index} xs={12} sm={6} md={4}>
             <ImageCard
               maxWidth={400}
               imageHeight={200}
@@ -43,6 +51,7 @@ const Menu = () => {
             />
           </Grid>
         ))}
+      <BoxFooter />
       </Grid>
     </div>
   );

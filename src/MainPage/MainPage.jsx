@@ -2,7 +2,7 @@ import NavBar from '../utils/navbar';
 import Carousel from './carousel';
 import BasicCard from './BasicCard';
 import Box from '@mui/material/Box';
-import BoxFooter from './BoxFooter';
+import BoxFooter from '../utils/BoxFooter';
 
 const MainPage = () => {
   return (
