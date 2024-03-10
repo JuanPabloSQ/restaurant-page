@@ -2,8 +2,8 @@ import NavBar from "../utils/navbar";
 import BoxFooter from "../utils/BoxFooter";
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
-import BasicDatePicker from "../ReservePage/BasicDatePicker"
-import BasicTimePicker from "../ReservePage/BasicTimePicker"
+import BasicDatePicker from "./BasicDatePicker"
+import BasicTimePicker from "./BasicTimePicker"
 import BoardSelect from "./BoardSelect";
 
 const Reserve = () => {
@@ -15,6 +15,10 @@ const Reserve = () => {
         component="form"
         spacing={1} 
         sx={{
+          display="flex" ,
+          justifyContent="space-between",
+           marginTop={10}, 
+           p={2},
           backgroundColor: '#333',  // Cambiado a gris oscuro
           borderRadius: '8px',      // Bordes redondos
           padding: '16px',          // Espaciado interno
