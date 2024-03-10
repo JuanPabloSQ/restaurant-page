@@ -5,6 +5,7 @@ import { collection, getDocs } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 import Grid from '@mui/material/Grid';
 import BoxFooter from '../utils/BoxFooter';
+import Box from '@mui/material/Box';
 
 const Menu = () => {
   const [menu, setMenu] = useState([]);
@@ -30,7 +31,7 @@ const Menu = () => {
   }, []);
 
   return (
-    <div>
+    <Box>
       <Grid>
         <NavBar />
       </Grid>
@@ -55,7 +56,7 @@ const Menu = () => {
         ))}
       </Grid>
       <BoxFooter />
-    </div>
+    </Box>
   );
 };
 

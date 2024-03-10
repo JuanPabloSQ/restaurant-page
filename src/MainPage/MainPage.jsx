@@ -6,10 +6,10 @@ import BoxFooter from '../utils/BoxFooter';
 
 const MainPage = () => {
   return (
-    <Box>
+    <Box >
       <NavBar />
-      <Box display="flex" justifyContent="space-between" marginTop={10} p={2}>
-        <BasicCard />
+      <Box display="flex" justifyContent="space-between" marginTop={10} p={2} >
+        <BasicCard  />
         <Carousel />
       </Box>
       <BoxFooter />
