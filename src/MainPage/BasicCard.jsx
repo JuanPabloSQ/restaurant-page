@@ -3,6 +3,7 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { Link } from 'react-router-dom';
 
 export default function BasicCard() {
   return (
@@ -19,7 +20,9 @@ export default function BasicCard() {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button variant="contained">Haz tu reserva</Button>
+        <Link to="/reserva" style={{ textDecoration: 'none' }}>
+          <Button variant="contained">Haz tu reserva</Button>
+        </Link>
       </CardActions>
     </Card>
   );

@@ -10,10 +10,11 @@ function App() {
       <div>
         <Routes>
           <Route path="/" element={<MainPage />} />
+          <Route path="/Zutto" element={<MainPage />} />
           <Route path="/reserva" element={<Reserve />} />
           <Route path="/menu" element={<Menu />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/contacto" element={<ContactPage/>} />
+          <Route path="/conocenos" element={<Blog />} />
+          <Route path="/contactanos" element={<ContactPage/>} />
         </Routes>
       </div>
     
