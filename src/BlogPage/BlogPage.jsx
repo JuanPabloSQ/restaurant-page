@@ -13,7 +13,7 @@ const Blog = () => {
         maxWidth="100%"
         display="flex"
         justifyContent="center"
-        alignItems="center"
+        marginTop={10}
         flex="1"
         p={2}
       >
@@ -24,7 +24,7 @@ const Blog = () => {
           imageHeight={300} 
           titleText="Descubre Nuestra Esencia Culinary: [Nombre del Restaurante] - Un Viaje a Japón en Cada Bocado"
           bodyText={<BodyText />}
-          image="https://play-lh.googleusercontent.com/F8F_52NqhrMtlQF1Rwdxr68QO1qHzvHH2BWQjQ1LDUXChst0fOqKnRNmvaM9b6UrZIc=w526-h296-rw"
+          image="https://tofuu.getjusto.com/orioneat-prod/fjzscSzZyeC5FWPvg-56%20mix.jpeg"
         />
       </Box>
     </div>
