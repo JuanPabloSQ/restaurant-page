@@ -14,24 +14,24 @@ const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 const images = [
   {
-    label: 'San Francisco – Oakland Bay Bridge, United States',
+    label: 'Ramen 1',
     imgPath:
-      'https://ik.imagekit.io/smithfield/farmerjohn/3b1720e5-a9aa-0088-f165-1043ab81f774/c3f85bfa-30a1-4f5d-80ef-5c4e33f8c046/Elevated-Ramen-w-Bacon_A_Web_400x250.jpg?tr=w-848,c-at_max,f-auto',
+      'https://www.foodadvisor.my/attachments/6c71b37c7c9139472b6e9c4ce07ac8fd169c9a1a/store/fill/800/500/69a25ed154ed335532cc5a8c9ec1501840e617a59a941113a95a6c0f92eb/featured_image.jpg',
   },
   {
-    label: 'Bird',
+    label: 'Sushi 1',
     imgPath:
-      'https://images.unsplash.com/photo-1538032746644-0212e812a9e7?auto=format&fit=crop&w=400&h=250&q=60',
+      'https://img-us.didaudo.net/us-locations/US/000/002/2139/top-7-sushi-restaurants-in-brooklyn-heights-new-york-city.jpg',
   },
   {
-    label: 'Bali, Indonesia',
+    label: 'Sushi 2',
     imgPath:
-      'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=400&h=250',
+      'https://thehootleeds.com/wp-content/uploads/2021/10/Screenshot-2021-10-21-at-11.05.18-800x500.png',
   },
   {
-    label: 'Goč, Serbia',
+    label: 'Ramen 2',
     imgPath:
-      'https://images.unsplash.com/photo-1512341689857-198e7e2f3ca8?auto=format&fit=crop&w=400&h=250&q=60',
+      'https://d15k2d11r6t6rl.cloudfront.net/public/users/Integrators/8acbeec7-ece8-4e66-9ac5-d1a10a4369ba/test1-clientside/Singapore/Menya%20Aoi/Jan2024/festive-family-set-reward.jpg',
   },
 ];
 
