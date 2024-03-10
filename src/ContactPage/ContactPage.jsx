@@ -4,6 +4,7 @@ import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 
 const ContactPage = () => {
   return (
@@ -13,7 +14,7 @@ const ContactPage = () => {
         display="flex"
         justifyContent="center"
         alignItems="center"
-        sx={{ paddingLeft: '200px', paddingRight: '200px', marginTop: '200px' }} 
+        sx={{ paddingLeft: '200px', paddingRight: '200px', marginTop: '150px' }} 
       >
         <Grid 
           container 
@@ -38,6 +39,11 @@ const ContactPage = () => {
             },
           }}
         >
+          <Grid item xs={12} sx={{ marginBottom: '16px' }}>
+            <Typography variant="h5" color="white" align="center">
+              Contáctanos
+            </Typography>
+          </Grid>
           <Grid item xs={12}>
             <TextField fullWidth id="ConactName" label="Tu nombre" variant="outlined" />
           </Grid>
