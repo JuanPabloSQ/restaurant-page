@@ -57,6 +57,8 @@ const Reserve = () => {
   const handleDateChange = (date) => {
     setSelectedDate(date);
   };
+  
+
 
   const handleReservationSubmit = async () => {
 
@@ -83,11 +85,11 @@ const Reserve = () => {
       
       const reservationsCollection = collection(db, 'reservations');
       const docRef = await addDoc(reservationsCollection, reservationData);
-
       console.log("Reserva exitosa. Documento ID:", docRef.id);
       
     } catch (error) {
       console.error("Error al realizar la reserva:", error);
+
     }
   };
 

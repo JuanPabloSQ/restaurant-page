@@ -18,7 +18,7 @@ const Menu = () => {
       setMenu(dataMenu.docs.map(doc => ({  
         titleText: doc.data().name,
         bodyText: `Precio: ${doc.data().value}`,  
-        image: "/path/to/your/image.jpg",  
+        image: doc.data().image,  
       })));
     } catch (error) {
       console.error("Error fetching menu:", error);
@@ -40,14 +40,14 @@ const Menu = () => {
         alignItems="center"
         container 
         spacing={2} 
-        style={{ marginLeft: '10px', marginTop: "80px", marginBottom: "20px" }} 
+        style={{ marginLeft: '10px', marginTop: "80px", marginBottom: "50px" }} 
       >
         {menu.map((menuItem, index) => (
           <Grid item key={index} xs={12} sm={6} md={4}>
             <ImageCard
               maxWidth={400}
               imageHeight={200}
-              imagePath={menuItem.image}
+              image={menuItem.image}
               titleText={menuItem.titleText}
               bodyText={menuItem.bodyText}
             />
