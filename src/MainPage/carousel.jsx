@@ -16,7 +16,7 @@ const images = [
   {
     label: 'San Francisco – Oakland Bay Bridge, United States',
     imgPath:
-      'https://images.unsplash.com/photo-1537944434965-cf4679d1a598?auto=format&fit=crop&w=400&h=250&q=60',
+      'https://ik.imagekit.io/smithfield/farmerjohn/3b1720e5-a9aa-0088-f165-1043ab81f774/c3f85bfa-30a1-4f5d-80ef-5c4e33f8c046/Elevated-Ramen-w-Bacon_A_Web_400x250.jpg?tr=w-848,c-at_max,f-auto',
   },
   {
     label: 'Bird',
@@ -53,7 +53,7 @@ function Carousel() {
   };
 
   return (
-    <Box sx={{ maxWidth: 700, height: '60vh', flexGrow: 1 }}>
+    <Box sx={{ maxWidth: 702, height: '60vh', flexGrow: 1 }}>
       <Paper
         square
         elevation={0}

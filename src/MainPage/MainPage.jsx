@@ -8,7 +8,7 @@ const MainPage = () => {
   return (
     <Box>
       <NavBar />
-      <Box display="flex" justifyContent="space-between" p={2}>
+      <Box display="flex" justifyContent="space-between" marginTop={10} p={2}>
         <BasicCard />
         <Carousel />
       </Box>
