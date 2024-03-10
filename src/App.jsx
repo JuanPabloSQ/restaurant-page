@@ -1,5 +1,5 @@
 import { Route, Routes} from 'react-router';
-import Reserve from './ReservePage/Reserve';
+import Reserve from './ReservePage/ReservePage';
 import MainPage from './MainPage/MainPage';
 import Menu from "./MenuPage/MenuPage";
 import Blog from "./BlogPage/BlogPage";

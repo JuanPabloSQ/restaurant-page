@@ -27,13 +27,13 @@ const currencies = [
   },
 ];
 
-const BoardSelect = ({ value, onChange, error, helperText }) => {
+const PeopleSelect = ({ value, onChange, error, helperText }) => {
   return (
     <FormControl fullWidth error={error}>
-      <InputLabel id='Board'>Mesa</InputLabel>
+      <InputLabel id='People'> Numero de Personas</InputLabel>
       <Select
-        labelId='Board'
-        label='Mesa'
+        labelId='People'
+        label='Numero de personas'
         value={value || ''}
         onChange={onChange}
       >
@@ -48,4 +48,4 @@ const BoardSelect = ({ value, onChange, error, helperText }) => {
   );
 };
 
-export default BoardSelect;
+export default PeopleSelect;
