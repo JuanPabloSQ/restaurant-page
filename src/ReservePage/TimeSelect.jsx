@@ -30,9 +30,9 @@ const currencies = [
 const TimeSelect = ({ value, onChange, error, helperText }) => {
   return (
     <FormControl fullWidth error={error}>
-      <InputLabel id='Schedule'> Horario</InputLabel>
+      <InputLabel id='schedule'> Horario</InputLabel>
       <Select
-        labelId='Schedule'
+        labelId='schedule'
         label='Horario'
         value={value || ''}
         onChange={onChange}

@@ -18,9 +18,9 @@ const currencies = [
 const SmokeSelect = ({ value, onChange, error, helperText }) => {
   return (
     <FormControl fullWidth error={error}>
-      <InputLabel id='Smoke'> Sector fumador </InputLabel>
+      <InputLabel id='smoke'> Sector fumador </InputLabel>
       <Select
-        labelId='Smoke'
+        labelId='smoke'
         label='Sector fumador'
         value={value || ''}
         onChange={onChange}

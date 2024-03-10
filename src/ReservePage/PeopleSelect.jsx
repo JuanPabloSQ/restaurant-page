@@ -30,9 +30,9 @@ const currencies = [
 const PeopleSelect = ({ value, onChange, error, helperText }) => {
   return (
     <FormControl fullWidth error={error}>
-      <InputLabel id='People'> Numero de Personas</InputLabel>
+      <InputLabel id='people'> Numero de Personas</InputLabel>
       <Select
-        labelId='People'
+        labelId='people'
         label='Numero de personas'
         value={value || ''}
         onChange={onChange}

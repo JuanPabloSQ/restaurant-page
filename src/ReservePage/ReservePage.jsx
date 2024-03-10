@@ -37,7 +37,7 @@ const Reserve = () => {
         display="flex"
         justifyContent="center"
         alignItems="center"
-        sx={{ paddingLeft: '200px', paddingRight: '200px', marginTop: '100px' }} 
+        sx={{ paddingLeft: '200px', paddingRight: '200px', marginTop: '120px' }} 
       >
         <Grid 
           container 
@@ -68,16 +68,16 @@ const Reserve = () => {
             </Typography>
           </Grid>
           <Grid item xs={12} sm={6}>
-            <TextField fullWidth id="ConactName" label="Tu nombre" variant="outlined" />
+            <TextField fullWidth id="name" label="Tu nombre" variant="outlined" />
           </Grid>
           <Grid item xs={12} sm={6}>
-            <TextField fullWidth id="ConactLastName" label="Tu apellido" variant="outlined" />
+            <TextField fullWidth id="lastName" label="Tu apellido" variant="outlined" />
           </Grid>
           <Grid item xs={12} sm={6}>
-            <TextField fullWidth id="ConactMail" label="Email" variant="outlined" />
+            <TextField fullWidth id="mail" label="Email" variant="outlined" />
           </Grid>
           <Grid item xs={12} sm={6}>
-            <TextField fullWidth id="ConactPhone" label="Teléfono" variant="outlined" />
+            <TextField fullWidth id="phone" label="Teléfono" variant="outlined" />
           </Grid>
           <Grid item xs={12} sm={6}>
             <PeopleSelect value={selectedPeople} onChange={handlePeopleChange} />
@@ -86,14 +86,14 @@ const Reserve = () => {
             <SmokeSelect value={selectedSmoke} onChange={handleSmokeChange} />
           </Grid>
           <Grid item xs={12} sm={6}>
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
-              <DatePicker label="Fecha" style={{ width: '100%' }} />
+            <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale='es-cl'>
+              <DatePicker label="Fecha" format="DD-MM-YYYY" sx={{ width: '100%' }} />
             </LocalizationProvider>
           </Grid>
           <Grid item xs={12} sm={6}>
             <TimeSelect value={selectedTime} onChange={handleTimeChange}/>
           </Grid>
-          <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center', marginTop: '16px' }}>
+          <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center', marginTop: '20px', marginBottom: "10px" }}>
             <Button variant="contained">Enviar</Button>
           </Grid>
         </Grid>
