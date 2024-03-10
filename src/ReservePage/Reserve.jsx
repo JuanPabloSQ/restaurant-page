@@ -3,6 +3,8 @@ import BoxFooter from "../utils/BoxFooter";
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import BasicDatePicker from "../ReservePage/BasicDatePicker"
+import BasicTimePicker from "../ReservePage/BasicTimePicker"
+import BoardSelect from "./BoardSelect";
 
 const Reserve = () => {
   return (
@@ -38,10 +40,10 @@ const Reserve = () => {
           <BasicDatePicker/>
         </Grid>
         <Grid item xs={12}>
-          <TextField fullWidth id="outlined-basic" label="Outlined" variant="outlined" />
+          <BasicTimePicker />
         </Grid>
         <Grid item xs={12}>
-          <TextField fullWidth id="outlined-basic" label="Outlined" variant="outlined" />
+          <BoardSelect/>
         </Grid>
       </Grid>
       <BoxFooter />

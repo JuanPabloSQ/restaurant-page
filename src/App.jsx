@@ -3,6 +3,7 @@ import Reserve from './ReservePage/Reserve';
 import MainPage from './MainPage/MainPage';
 import Menu from "./MenuPage/MenuPage";
 import Blog from "./BlogPage/BlogPage";
+import ContactPage from './ContactPage/ContactPage';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
           <Route path="/reserva" element={<Reserve />} />
           <Route path="/menu" element={<Menu />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/contacto" element={<ContactPage/>} />
         </Routes>
       </div>
     
