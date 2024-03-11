@@ -1,5 +1,5 @@
 import ImageCard from '../utils/ImageCard';
-import NavBar from '../utils/navbar';
+import NavBar from '../utils/NavBar';
 import Box from '@mui/material/Box';
 import BodyText from '../BlogPage/BodyText';
 import BoxFooter from "../utils/BoxFooter";

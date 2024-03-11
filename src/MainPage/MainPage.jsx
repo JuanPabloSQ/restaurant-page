@@ -1,5 +1,5 @@
-import NavBar from '../utils/navbar';
-import Carousel from './carousel';
+import NavBar from '../utils/NavBar';
+import Carousel from './Carousel';
 import BasicCard from './BasicCard';
 import Box from '@mui/material/Box';
 import BoxFooter from '../utils/BoxFooter';

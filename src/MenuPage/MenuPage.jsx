@@ -1,5 +1,5 @@
 import ImageCard from '../utils/ImageCard';
-import NavBar from '../utils/navbar';
+import NavBar from '../utils/NavBar';
 import { db } from "../firebase";
 import { collection, getDocs } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
