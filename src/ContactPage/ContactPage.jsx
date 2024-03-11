@@ -11,13 +11,13 @@ import Typography from '@mui/material/Typography';
 import { useSnackbar } from "../utils/SnackBarContext";
 import * as yup from 'yup';
 
-const validationSchema = {
+const schema = yup.object({
   name: yup.string().required('El nombre es obligatorio'),
   lastName: yup.string().required('El apellido es obligatorio'),
   email: yup.string().email('Ingrese un correo electrónico válido').required('El correo electrónico es obligatorio'),
   phone: yup.number().typeError('Ingrese un número').required('El teléfono es obligatorio'),
   comments: yup.string().required('Ingrese sus comentarios').max(1000, 'Los comentarios deben tener como máximo 1000 caracteres'),
-};
+});
 
 const ContactPage = () => {
   const [name, setName] = useState('');
@@ -34,23 +34,22 @@ const ContactPage = () => {
     comments: '',
   });
 
-  const validateField = (fieldName, value) => {
+  const validateField = (name, value) => {
     try {
-      yup.reach(yup.object(validationSchema), fieldName).validateSync(value, { abortEarly: false });
-      console.log(`Validación exitosa para ${fieldName}`);
-      setFormErrors((prevErrors) => ({ ...prevErrors, [fieldName]: '' }));
+      schema.validateSyncAt(name, { [name]: value }, { abortEarly: false });
+      console.log(`Validación exitosa para ${name}`);
+      setFormErrors((prevErrors) => ({ ...prevErrors, [name]: '' }));
     } catch (error) {
-      console.error(`Validación fallida para ${fieldName}:`, error);
+      console.error(`Validación fallida para ${name}:`, error);
       setFormErrors((prevErrors) => ({
         ...prevErrors,
-        [fieldName]: error.errors[0],
+        [name]: error.errors[0],
       }));
     }
   };
 
-  const handleInputChange = (fieldName, value) => {
-    validateField(fieldName, value);
-    switch (fieldName) {
+  const handleInputChange = (name, value) => {
+    switch (name) {
       case 'name':
         setName(value);
         break;
@@ -69,6 +68,7 @@ const ContactPage = () => {
       default:
         break;
     }
+    if (formErrors[name]) validateField(name, value);
   };
 
   const { errorSnackbar } = useSnackbar();
@@ -84,9 +84,16 @@ const ContactPage = () => {
 
   const handleFormSubmit = async () => {
     try {
-      Object.keys(validationSchema).forEach(fieldName => {
-        validateField(fieldName, eval(fieldName));
-      });
+      schema.validateSync(
+        {
+          name,
+          lastName,
+          email,
+          phone,
+          comments,
+        },
+        { abortEarly: false },
+      );
 
       const formData = {
         name,
@@ -103,17 +110,9 @@ const ContactPage = () => {
 
       clearForm();
     } catch (error) {
-      if (error.name === 'ValidationError') {
+      if (error.name === 'ValidationError') applyFormErrors(error); 
         errorSnackbar('Error con el servidor');
         console.error("Error de validación:", error.errors);
-        const errors = {};
-        error.inner.forEach((err) => {
-          errors[err.path] = err.message;
-        });
-        applyFormErrors(errors);
-      } else {
-        console.error("Error al enviar el formulario de contacto:", error);
-      }
     }
   };
 
@@ -170,7 +169,7 @@ const ContactPage = () => {
               variant="outlined"
               value={name}
               onChange={(e) => handleInputChange('name', e.target.value)}
-              error={Boolean(formErrors.name)}
+              error={!!formErrors.name}
               helperText={formErrors.name}
             />
           </Grid>
@@ -182,7 +181,7 @@ const ContactPage = () => {
               variant="outlined"
               value={lastName}
               onChange={(e) => handleInputChange('lastName', e.target.value)}
-              error={Boolean(formErrors.lastName)}
+              error={!!formErrors.lastName}
               helperText={formErrors.lastName}
             />
           </Grid>
@@ -194,7 +193,7 @@ const ContactPage = () => {
               variant="outlined"
               value={email}
               onChange={(e) => handleInputChange('email', e.target.value)}
-              error={Boolean(formErrors.email)}
+              error={!!formErrors.email}
               helperText={formErrors.email}
             />
           </Grid>
@@ -206,7 +205,7 @@ const ContactPage = () => {
               variant="outlined"
               value={phone}
               onChange={(e) => handleInputChange('phone', e.target.value)}
-              error={Boolean(formErrors.phone)}
+              error={!!formErrors.phone}
               helperText={formErrors.phone}
             />
           </Grid>
@@ -220,7 +219,7 @@ const ContactPage = () => {
               variant="outlined"
               value={comments}
               onChange={(e) => handleInputChange('comments', e.target.value)}
-              error={Boolean(formErrors.comments)}
+              error={!!formErrors.comments}
               helperText={formErrors.comments}
             />
           </Grid>

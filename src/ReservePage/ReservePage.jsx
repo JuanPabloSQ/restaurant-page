@@ -18,7 +18,7 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { useSnackbar } from "../utils/SnackBarContext";
 import * as yup from 'yup';
 
-const validationSchema = {
+const schema = yup.object({
   name: yup.string().required('El nombre es obligatorio'),
   lastName: yup.string().required('El apellido es obligatorio'),
   mail: yup.string().email('Ingrese un correo electrónico válido').required('El correo electrónico es obligatorio'),
@@ -26,8 +26,8 @@ const validationSchema = {
   selectedPeople: yup.number().typeError('Seleccione el número de personas').required('Seleccione el número de personas'),
   selectedSmoke: yup.number().typeError('Seleccione la preferencia').required('Seleccione la preferencia'),
   selectedTime: yup.number().typeError('Seleccione la hora de la reserva').required('Seleccione la hora de la reserva'),
-  selectedDate: yup.date().required('La fecha de nacimiento es obligatoria'),
-};
+  selectedDate: yup.date().typeError('Seleccione la fecha de la reserva').required('La fecha de nacimiento es obligatoria'),
+});
 
 const Reserve = () => {
   const [selectedPeople, setSelectedPeople] = useState('');
@@ -50,23 +50,22 @@ const Reserve = () => {
     selectedDate: '',
   });
 
-  const validateField = (fieldName, value) => {
+  const validateField = (name, value) => {
     try {
-      yup.reach(yup.object(validationSchema), fieldName).validateSync(value, { abortEarly: false });
-      console.log(`Validación exitosa para ${fieldName}`);
-      setFormErrors((prevErrors) => ({ ...prevErrors, [fieldName]: '' }));
+      schema.validateSyncAt(name, { [name]: value }, { abortEarly: false });
+      console.log(`Validación exitosa para ${name}`);
+      setFormErrors((prevErrors) => ({ ...prevErrors, [name]: '' }));
     } catch (error) {
-      console.error(`Validación fallida para ${fieldName}:`, error);
+      console.error(`Validación fallida para ${name}:`, error);
       setFormErrors((prevErrors) => ({
         ...prevErrors,
-        [fieldName]: error.errors[0],
+        [name]: error.errors[0],
       }));
     }
   };
 
-  const handleInputChange = (fieldName, value) => {
-    validateField(fieldName, value);
-    switch (fieldName) {
+  const handleInputChange = (name, value) => {
+    switch (name) {
       case 'name':
         setName(value);
         break;
@@ -94,6 +93,7 @@ const Reserve = () => {
       default:
         break;
     }
+    if (formErrors[name]) validateField(name, value);
   };
 
   const { errorSnackbar } = useSnackbar();
@@ -112,16 +112,21 @@ const Reserve = () => {
 
   const handleSubmit = async () => {
     try {
-      Object.keys(validationSchema).forEach(fieldName => {
-        validateField(fieldName, eval(fieldName));
-      });
-
-      if (!selectedDate) {
-        console.error("Seleccione una fecha antes de enviar la reserva.");
-        return;
-      }
-
       const formattedDate = dayjs(selectedDate).format('DD-MM-YYYY');
+
+      schema.validateSync(
+        {
+          name,
+          lastName,
+          mail,
+          phone,
+          selectedPeople,
+          selectedTime,
+          selectedSmoke,
+          selectedDate: formattedDate,
+        },
+        { abortEarly: false },
+      );
 
       const reservationData = {
         name,
@@ -134,6 +139,11 @@ const Reserve = () => {
         date: formattedDate,
       };
 
+      if (!selectedDate) {
+        console.error("Seleccione una fecha antes de enviar la reserva.");
+        return;
+      }
+
       const reservationsCollection = collection(db, 'reservations');
       const docRef = await addDoc(reservationsCollection, reservationData);
       successSnackbar('Reserva realizada con éxito ');
@@ -141,17 +151,9 @@ const Reserve = () => {
 
       clearForm();
     } catch (error) {
-      if (error.name === 'ValidationError') {
-        errorSnackbar('Error con el servidor');
+      if (error.name === 'ValidationError') applyFormErrors(error);
         console.error("Error de validación:", error.errors);
-        const errors = {};
-        error.inner.forEach((err) => {
-          errors[err.path] = err.message;
-        });
-        applyFormErrors(errors);
-      } else {
-        console.error("Error al realizar la reserva:", error);
-      }
+        errorSnackbar('Error al enviar datos');
     }
   };
 
@@ -208,7 +210,7 @@ const Reserve = () => {
               variant="outlined"
               value={name}
               onChange={(e) => handleInputChange('name', e.target.value)}
-              error={Boolean(formErrors.name)}
+              error={!!formErrors.name}
               helperText={formErrors.name}
             />
           </Grid>
@@ -220,7 +222,7 @@ const Reserve = () => {
               variant="outlined"
               value={lastName}
               onChange={(e) => handleInputChange('lastName', e.target.value)}
-              error={Boolean(formErrors.lastName)}
+              error={!!formErrors.lastName}
               helperText={formErrors.lastName}
             />
           </Grid>
@@ -232,7 +234,7 @@ const Reserve = () => {
               variant="outlined"
               value={mail}
               onChange={(e) => handleInputChange('mail', e.target.value)}
-              error={Boolean(formErrors.mail)}
+              error={!!formErrors.mail}
               helperText={formErrors.mail}
             />
           </Grid>
@@ -244,23 +246,23 @@ const Reserve = () => {
               variant="outlined"
               value={phone}
               onChange={(e) => handleInputChange('phone', e.target.value)}
-              error={Boolean(formErrors.phone)}
+              error={!!formErrors.phone}
               helperText={formErrors.phone}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
             <PeopleSelect
               value={selectedPeople}
-              onChange={(event) => handleInputChange('selectedPeople', event.target.value)}
-              error={Boolean(formErrors.selectedPeople)}
+              onChange={(e) => handleInputChange('selectedPeople', e.target.value)}
+              error={!!formErrors.selectedPeople}
               helperText={formErrors.selectedPeople}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
             <SmokeSelect
               value={selectedSmoke}
-              onChange={(event) => handleInputChange('selectedSmoke', event.target.value)}
-              error={Boolean(formErrors.selectedSmoke)}
+              onChange={(e) => handleInputChange('selectedSmoke', e.target.value)}
+              error={!!formErrors.selectedSmoke}
               helperText={formErrors.selectedSmoke}
             />
           </Grid>
@@ -275,7 +277,7 @@ const Reserve = () => {
                 disablePast
                 slotProps={{
                   textField: {
-                    error: Boolean(formErrors.selectedDate),
+                    error: !!formErrors.selectedDate,
                     helperText: formErrors.selectedDate,
                   },
                 }}
@@ -285,8 +287,8 @@ const Reserve = () => {
           <Grid item xs={12} sm={6}>
             <TimeSelect
               value={selectedTime}
-              onChange={(event) => handleInputChange('selectedTime', event.target.value)}
-              error={Boolean(formErrors.selectedTime)}
+              onChange={(e) => handleInputChange('selectedTime', e.target.value)}
+              error={!!formErrors.selectedTime}
               helperText={formErrors.selectedTime}
             />
           </Grid>
