@@ -1,4 +1,4 @@
-import NavBar from "../utils/navbar";
+import NavBar from "../utils/NavBar";
 import BoxFooter from "../utils/BoxFooter";
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
@@ -44,25 +44,26 @@ const ContactPage = () => {
               Contáctanos
             </Typography>
           </Grid>
-          <Grid item xs={12}>
-            <TextField fullWidth id="ConactName" label="Tu nombre" variant="outlined" />
+          <Grid item xs={6}>
+            <TextField fullWidth id="name" label="Tu nombre" variant="outlined" />
           </Grid>
-          <Grid item xs={12}>
-            <TextField fullWidth id="ConactLastName" label="Tu apellido" variant="outlined" />
+          <Grid item xs={6}>
+            <TextField fullWidth id="lastName" label="Tu apellido" variant="outlined" />
           </Grid>
-          <Grid item xs={12}>
-            <TextField fullWidth id="ConactMail" label="Email" variant="outlined" />
+          <Grid item xs={6}>
+            <TextField fullWidth id="mail" label="Email" variant="outlined" />
           </Grid>
-          <Grid item xs={12}>
-            <TextField fullWidth id="ConactPhone" label="Teléfono" variant="outlined" />
+          <Grid item xs={6}>
+            <TextField fullWidth id="phone" label="Teléfono" variant="outlined" />
           </Grid>
           <Grid item xs={12}>
             <TextField
               fullWidth
-              id="Comments"
+              id="comments"
               label="Mensaje y comentarios"
               multiline
               maxRows={4}
+              variant="outlined"
             />
           </Grid>
           <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center', marginTop: '16px' }}>

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import dayjs from 'dayjs';
 import { db } from "../firebase";
 import { collection, addDoc } from "firebase/firestore";
-import NavBar from "../utils/navbar";
+import NavBar from "../utils/NavBar";
 import BoxFooter from "../utils/BoxFooter";
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
