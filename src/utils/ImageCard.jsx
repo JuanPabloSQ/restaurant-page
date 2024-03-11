@@ -4,9 +4,9 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 
-export default function ImageCard({ maxWidth, imageWidth, imageHeight, image, bodyText, titleText }) {
+export default function ImageCard({ maxWidth, imageWidth, imageHeight, image, bodyText, titleText, bgc, colorText }) {
   return (
-    <Card sx={{ maxWidth: maxWidth }}>
+    <Card sx={{ maxWidth: maxWidth, backgroundColor: bgc  }}>
       <CardActionArea>
         <CardMedia
           component="img"
@@ -15,10 +15,10 @@ export default function ImageCard({ maxWidth, imageWidth, imageHeight, image, bo
           alt="green iguana"
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
+          <Typography gutterBottom variant="h5" component="div" color={colorText}>
             {titleText}
           </Typography>
-          <Typography variant="body2" color="text.secondary">
+          <Typography variant="body2" color="text.secondary" >
             {bodyText} 
           </Typography>
         </CardContent>
