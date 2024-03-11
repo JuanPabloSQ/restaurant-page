@@ -17,18 +17,8 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import * as yup from 'yup';
 
-const Reserve = () => {
-  const [selectedPeople, setSelectedPeople] = useState('');
-  const [selectedTime, setSelectedTime] = useState('');
-  const [selectedSmoke, setSelectedSmoke] = useState('');
-  const [name, setName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [mail, setMail] = useState('');
-  const [phone, setPhone] = useState('');
-  const [selectedDate, setSelectedDate] = useState(null);
-  const [validationErrors, setValidationErrors] = useState({});
 
-  const validationSchema = yup.object({
+  const validationSchema = {
     name: yup.string().required('El nombre es obligatorio'),
     lastName: yup.string().required('El apellido es obligatorio'),
     mail: yup.string().email('Ingrese un correo electrónico válido').required('El correo electrónico es obligatorio'),
@@ -36,14 +26,43 @@ const Reserve = () => {
     selectedPeople: yup.number().typeError('Seleccione el número de personas').required('Seleccione el número de personas'),
     selectedSmoke: yup.number().typeError('Seleccione la preferencia').required('Seleccione la preferencia'),
     selectedTime: yup.number().typeError('Seleccione la hora de la reserva').required('Seleccione la hora de la reserva'),
-  });
+    selectedDate: yup.date().required('La fecha de nacimiento es obligatoria'),
+  };
 
-  const validateField = async (fieldName, value) => {
+  const Reserve = () => {
+    const [selectedPeople, setSelectedPeople] = useState('');
+    const [selectedTime, setSelectedTime] = useState('');
+    const [selectedSmoke, setSelectedSmoke] = useState('');
+    const [name, setName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [mail, setMail] = useState('');
+    const [phone, setPhone] = useState('');
+    const [selectedDate, setSelectedDate] = useState(null);
+   
+  
+  const [formErrors, setFormErrors] = useState({
+    name: '',
+    lastName: '',
+    mail: '',
+    phone: '',
+    selectedPeople: '',
+    selectedSmoke: '',
+    selectedTime: '',
+    selectedDate: '',
+  });
+  
+
+  const validateField = (fieldName, value) => {
     try {
-      await yup.reach(validationSchema, fieldName).validate(value);
-      setValidationErrors((prevErrors) => ({ ...prevErrors, [fieldName]: '' }));
+      yup.reach(yup.object(validationSchema), fieldName).validateSync(value, { abortEarly: false });
+      console.log(`Validación exitosa para ${fieldName}`);
+      setFormErrors((prevErrors) => ({ ...prevErrors, [fieldName]: '' }));
     } catch (error) {
-      setValidationErrors((prevErrors) => ({ ...prevErrors, [fieldName]: error.message }));
+      console.error(`Validación fallida para ${fieldName}:`, error);
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        [fieldName]: error.errors[0],
+      }));
     }
   };
 
@@ -71,6 +90,9 @@ const Reserve = () => {
       case 'selectedTime':
         setSelectedTime(value);
         break;
+      case 'selectedDate':
+        setSelectedDate(value);
+        break;
       default:
         break;
     }
@@ -78,10 +100,9 @@ const Reserve = () => {
 
   const handleSubmit = async () => {
     try {
-      await validationSchema.validate(
-        { name, lastName, mail, phone, selectedPeople, selectedSmoke, selectedTime },
-        { abortEarly: false }
-      );
+      Object.keys(validationSchema).forEach(fieldName => {
+        validateField(fieldName, eval(fieldName));
+      });
 
       if (!selectedDate) {
         console.error("Seleccione una fecha antes de enviar la reserva.");
@@ -111,12 +132,21 @@ const Reserve = () => {
         error.inner.forEach((err) => {
           errors[err.path] = err.message;
         });
-        setValidationErrors(errors);
+        applyFormErrors(errors);
       } else {
         console.error("Error al realizar la reserva:", error);
       }
     }
   };
+
+  const applyFormErrors = (error) => {
+    setFormErrors(
+      error.inner.reduce((acc, curr) => {
+        return { ...acc, [curr.path]: curr.errors[0] };
+      }, {}),
+    );
+  };
+
 
   return (
     <div>
@@ -163,8 +193,8 @@ const Reserve = () => {
               variant="outlined"
               value={name}
               onChange={(e) => handleInputChange('name', e.target.value)}
-              error={Boolean(validationErrors.name)}
-              helperText={validationErrors.name}
+              error={Boolean(formErrors.name)}
+              helperText={formErrors.name}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -175,8 +205,8 @@ const Reserve = () => {
               variant="outlined"
               value={lastName}
               onChange={(e) => handleInputChange('lastName', e.target.value)}
-              error={Boolean(validationErrors.lastName)}
-              helperText={validationErrors.lastName}
+              error={Boolean(formErrors.lastName)}
+              helperText={formErrors.lastName}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -187,8 +217,8 @@ const Reserve = () => {
               variant="outlined"
               value={mail}
               onChange={(e) => handleInputChange('mail', e.target.value)}
-              error={Boolean(validationErrors.mail)}
-              helperText={validationErrors.mail}
+              error={Boolean(formErrors.mail)}
+              helperText={formErrors.mail}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -199,24 +229,24 @@ const Reserve = () => {
               variant="outlined"
               value={phone}
               onChange={(e) => handleInputChange('phone', e.target.value)}
-              error={Boolean(validationErrors.phone)}
-              helperText={validationErrors.phone}
+              error={Boolean(formErrors.phone)}
+              helperText={formErrors.phone}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
             <PeopleSelect
               value={selectedPeople}
               onChange={(event) => handleInputChange('selectedPeople', event.target.value)}
-              error={Boolean(validationErrors.selectedPeople)}
-              helperText={validationErrors.selectedPeople}
+              error={Boolean(formErrors.selectedPeople)}
+              helperText={formErrors.selectedPeople}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
             <SmokeSelect
               value={selectedSmoke}
               onChange={(event) => handleInputChange('selectedSmoke', event.target.value)}
-              error={Boolean(validationErrors.selectedSmoke)}
-              helperText={validationErrors.selectedSmoke}
+              error={Boolean(formErrors.selectedSmoke)}
+              helperText={formErrors.selectedSmoke}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -227,6 +257,13 @@ const Reserve = () => {
                 value={selectedDate}
                 onChange={(date) => setSelectedDate(date)}
                 sx={{ width: '100%' }}
+                disablePast
+                slotProps={{
+                  textField: {
+                    error: Boolean(formErrors.selectedDate),
+                    helperText: formErrors.selectedDate,
+                  },
+                }}
               />
             </LocalizationProvider>
           </Grid>
@@ -234,8 +271,8 @@ const Reserve = () => {
             <TimeSelect
               value={selectedTime}
               onChange={(event) => handleInputChange('selectedTime', event.target.value)}
-              error={Boolean(validationErrors.selectedTime)}
-              helperText={validationErrors.selectedTime}
+              error={Boolean(formErrors.selectedTime)}
+              helperText={formErrors.selectedTime}
             />
           </Grid>
           <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center', marginTop: '20px', marginBottom: "10px" }}>
