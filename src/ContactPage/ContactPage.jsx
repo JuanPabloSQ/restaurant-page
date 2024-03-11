@@ -48,15 +48,39 @@ const ContactPage = () => {
     }
   };
 
-  const handleFieldChange = (setter) => (event) => {
-    const fieldName = event.target.id;
-    const value = event.target.value;
+  const handleInputChange = (fieldName, value) => {
     validateField(fieldName, value);
-    setter(value);
+    switch (fieldName) {
+      case 'name':
+        setName(value);
+        break;
+      case 'lastName':
+        setLastName(value);
+        break;
+      case 'email':
+        setEmail(value);
+        break;
+      case 'phone':
+        setPhone(value);
+        break;
+      case 'comments':
+        setComments(value);
+        break;
+      default:
+        break;
+    }
   };
 
   const { errorSnackbar } = useSnackbar();
   const { successSnackbar } = useSnackbar();
+
+  const clearForm = () => {
+    setName('');
+    setLastName('');
+    setEmail('');
+    setPhone('');
+    setComments('');
+  };
 
   const handleFormSubmit = async () => {
     try {
@@ -77,11 +101,7 @@ const ContactPage = () => {
       successSnackbar('Mensaje enviado con éxito ');
       console.log("Formulario de contacto enviado. Documento ID:", docRef.id);
 
-      setName('');
-      setLastName('');
-      setEmail('');
-      setPhone('');
-      setComments('');
+      clearForm();
     } catch (error) {
       if (error.name === 'ValidationError') {
         errorSnackbar('Error con el servidor');
@@ -149,7 +169,7 @@ const ContactPage = () => {
               label="Tu nombre"
               variant="outlined"
               value={name}
-              onChange={handleFieldChange(setName)}
+              onChange={(e) => handleInputChange('name', e.target.value)}
               error={Boolean(formErrors.name)}
               helperText={formErrors.name}
             />
@@ -161,7 +181,7 @@ const ContactPage = () => {
               label="Tu apellido"
               variant="outlined"
               value={lastName}
-              onChange={handleFieldChange(setLastName)}
+              onChange={(e) => handleInputChange('lastName', e.target.value)}
               error={Boolean(formErrors.lastName)}
               helperText={formErrors.lastName}
             />
@@ -173,7 +193,7 @@ const ContactPage = () => {
               label="Email"
               variant="outlined"
               value={email}
-              onChange={handleFieldChange(setEmail)}
+              onChange={(e) => handleInputChange('email', e.target.value)}
               error={Boolean(formErrors.email)}
               helperText={formErrors.email}
             />
@@ -185,7 +205,7 @@ const ContactPage = () => {
               label="Teléfono"
               variant="outlined"
               value={phone}
-              onChange={handleFieldChange(setPhone)}
+              onChange={(e) => handleInputChange('phone', e.target.value)}
               error={Boolean(formErrors.phone)}
               helperText={formErrors.phone}
             />
@@ -196,16 +216,16 @@ const ContactPage = () => {
               id="comments"
               label="Mensaje y comentarios"
               multiline
-              maxRows={4}
+              rows={4}
               variant="outlined"
               value={comments}
-              onChange={handleFieldChange(setComments)}
+              onChange={(e) => handleInputChange('comments', e.target.value)}
               error={Boolean(formErrors.comments)}
               helperText={formErrors.comments}
             />
           </Grid>
           <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center', marginTop: '16px' }}>
-            <Button variant="contained" onClick={handleFormSubmit}>
+            <Button variant="contained" type="button"  onClick={handleFormSubmit}>
               Enviar
             </Button>
           </Grid>

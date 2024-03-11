@@ -19,7 +19,7 @@ function App() {
           <SnackbarContextProvider>
             <Routes>
               <Route path="/" element={<MainPage />} />
-              <Route path="/Zutto" element={<MainPage />} />
+              <Route path="/inicio" element={<MainPage />} />
               <Route path="/reserva" element={<Reserve />} />
               <Route path="/menu" element={<Menu />} />
               <Route path="/conocenos" element={<Blog />} />

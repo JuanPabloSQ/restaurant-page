@@ -139,7 +139,6 @@ const Reserve = () => {
       successSnackbar('Reserva realizada con éxito ');
       console.log("Reserva exitosa. Documento ID:", docRef.id);
 
-      // Limpiar los campos después de un envío exitoso
       clearForm();
     } catch (error) {
       if (error.name === 'ValidationError') {
