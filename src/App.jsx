@@ -10,19 +10,22 @@ import '@fontsource/noto-sans-jp/500.css';
 import '@fontsource/noto-sans-jp/700.css';
 import {ThemeProvider} from "@mui/material"
 import theme from "../src/utils/theme";
+import { SnackbarContextProvider } from "../src/utils/SnackBarContext"
 
 function App() {
   return (
       <div>
         <ThemeProvider theme={theme}>
-          <Routes>
-            <Route path="/" element={<MainPage />} />
-            <Route path="/Zutto" element={<MainPage />} />
-            <Route path="/reserva" element={<Reserve />} />
-            <Route path="/menu" element={<Menu />} />
-            <Route path="/conocenos" element={<Blog />} />
-            <Route path="/contactanos" element={<ContactPage/>} />
-          </Routes>
+          <SnackbarContextProvider>
+            <Routes>
+              <Route path="/" element={<MainPage />} />
+              <Route path="/Zutto" element={<MainPage />} />
+              <Route path="/reserva" element={<Reserve />} />
+              <Route path="/menu" element={<Menu />} />
+              <Route path="/conocenos" element={<Blog />} />
+              <Route path="/contactanos" element={<ContactPage/>} />
+            </Routes>
+          </SnackbarContextProvider>
         </ThemeProvider>
       </div>
     

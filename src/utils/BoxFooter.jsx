@@ -21,7 +21,7 @@ export default function BoxFooter() {
       <Box display="flex" alignItems="center" mr={2}>
         <EmailIcon />
         <Typography variant="body1" ml={1}>
-          sushi@mail.com
+          zutto@mail.com
         </Typography>
       </Box>
       <Box display="flex" alignItems="center" mr={2}>

@@ -15,31 +15,30 @@ import SmokeSelect from "./SmokeSelect";
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { useSnackbar } from "../utils/SnackBarContext";
 import * as yup from 'yup';
 
+const validationSchema = {
+  name: yup.string().required('El nombre es obligatorio'),
+  lastName: yup.string().required('El apellido es obligatorio'),
+  mail: yup.string().email('Ingrese un correo electrónico válido').required('El correo electrónico es obligatorio'),
+  phone: yup.number().typeError('Ingrese un número').required('El teléfono es obligatorio'),
+  selectedPeople: yup.number().typeError('Seleccione el número de personas').required('Seleccione el número de personas'),
+  selectedSmoke: yup.number().typeError('Seleccione la preferencia').required('Seleccione la preferencia'),
+  selectedTime: yup.number().typeError('Seleccione la hora de la reserva').required('Seleccione la hora de la reserva'),
+  selectedDate: yup.date().required('La fecha de nacimiento es obligatoria'),
+};
 
-  const validationSchema = {
-    name: yup.string().required('El nombre es obligatorio'),
-    lastName: yup.string().required('El apellido es obligatorio'),
-    mail: yup.string().email('Ingrese un correo electrónico válido').required('El correo electrónico es obligatorio'),
-    phone: yup.number().typeError('Ingrese solo números').required('El teléfono es obligatorio'),
-    selectedPeople: yup.number().typeError('Seleccione el número de personas').required('Seleccione el número de personas'),
-    selectedSmoke: yup.number().typeError('Seleccione la preferencia').required('Seleccione la preferencia'),
-    selectedTime: yup.number().typeError('Seleccione la hora de la reserva').required('Seleccione la hora de la reserva'),
-    selectedDate: yup.date().required('La fecha de nacimiento es obligatoria'),
-  };
+const Reserve = () => {
+  const [selectedPeople, setSelectedPeople] = useState('');
+  const [selectedTime, setSelectedTime] = useState('');
+  const [selectedSmoke, setSelectedSmoke] = useState('');
+  const [name, setName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [mail, setMail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [selectedDate, setSelectedDate] = useState(null);
 
-  const Reserve = () => {
-    const [selectedPeople, setSelectedPeople] = useState('');
-    const [selectedTime, setSelectedTime] = useState('');
-    const [selectedSmoke, setSelectedSmoke] = useState('');
-    const [name, setName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [mail, setMail] = useState('');
-    const [phone, setPhone] = useState('');
-    const [selectedDate, setSelectedDate] = useState(null);
-   
-  
   const [formErrors, setFormErrors] = useState({
     name: '',
     lastName: '',
@@ -50,7 +49,6 @@ import * as yup from 'yup';
     selectedTime: '',
     selectedDate: '',
   });
-  
 
   const validateField = (fieldName, value) => {
     try {
@@ -98,6 +96,20 @@ import * as yup from 'yup';
     }
   };
 
+  const { errorSnackbar } = useSnackbar();
+  const { successSnackbar } = useSnackbar();
+
+  const clearForm = () => {
+    setName('');
+    setLastName('');
+    setMail('');
+    setPhone('');
+    setSelectedPeople('');
+    setSelectedSmoke('');
+    setSelectedTime('');
+    setSelectedDate(null);
+  };
+
   const handleSubmit = async () => {
     try {
       Object.keys(validationSchema).forEach(fieldName => {
@@ -124,9 +136,14 @@ import * as yup from 'yup';
 
       const reservationsCollection = collection(db, 'reservations');
       const docRef = await addDoc(reservationsCollection, reservationData);
+      successSnackbar('Reserva realizada con éxito ');
       console.log("Reserva exitosa. Documento ID:", docRef.id);
+
+      // Limpiar los campos después de un envío exitoso
+      clearForm();
     } catch (error) {
       if (error.name === 'ValidationError') {
+        errorSnackbar('Error con el servidor');
         console.error("Error de validación:", error.errors);
         const errors = {};
         error.inner.forEach((err) => {
@@ -146,7 +163,6 @@ import * as yup from 'yup';
       }, {}),
     );
   };
-
 
   return (
     <div>
