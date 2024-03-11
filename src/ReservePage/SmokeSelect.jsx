@@ -24,6 +24,7 @@ const SmokeSelect = ({ value, onChange, error, helperText }) => {
         label='Sector fumador'
         value={value || ''}
         onChange={onChange}
+        sx={{ color: 'white' }}
       >
         {currencies.map((option) => (
           <MenuItem key={option.value} value={option.value}>

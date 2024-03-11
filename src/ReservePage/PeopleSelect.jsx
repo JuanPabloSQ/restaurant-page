@@ -36,6 +36,7 @@ const PeopleSelect = ({ value, onChange, error, helperText }) => {
         label='Numero de personas'
         value={value || ''}
         onChange={onChange}
+        sx={{ color: 'white' }}
       >
         {currencies.map((option) => (
           <MenuItem key={option.value} value={option.value}>

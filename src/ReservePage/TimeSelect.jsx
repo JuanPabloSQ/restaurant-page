@@ -36,6 +36,7 @@ const TimeSelect = ({ value, onChange, error, helperText }) => {
         label='Horario'
         value={value || ''}
         onChange={onChange}
+        sx={{ color: 'white' }}
       >
         {currencies.map((option) => (
           <MenuItem key={option.value} value={option.value}>
