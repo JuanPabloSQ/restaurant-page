@@ -12,7 +12,7 @@ import RamenDiningIcon from '@mui/icons-material/RamenDining';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const pages = ['Inicio','Menu', 'Conocenos', 'Contactanos'];
+const pages = ['Inicio', 'Menu', 'Conocenos', 'Contactanos'];
 
 function NavBar() {
   const [anchorElNav, setAnchorElNav] = useState(null);
@@ -43,7 +43,7 @@ function NavBar() {
               textDecoration: 'none',
             }}
           >
-            <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+            <Link to="/Proyecto-4/" style={{ textDecoration: 'none', color: 'inherit' }}>
               ZUTTO
             </Link>
           </Typography>
@@ -78,7 +78,7 @@ function NavBar() {
               }}
             >
               {pages.map((page) => (
-                <Link to={`/${page.toLowerCase()}`} key={page} style={{ textDecoration: 'none', color: 'inherit' }}>
+                <Link to={`/Proyecto-4/${page.toLowerCase()}`} key={page} style={{ textDecoration: 'none', color: 'inherit' }}>
                   <MenuItem onClick={handleCloseNavMenu} sx={{ textAlign: 'center' }}>
                     {page}
                   </MenuItem>
@@ -105,7 +105,7 @@ function NavBar() {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
-              <Link to={`/${page.toLowerCase()}`} key={page} style={{ textDecoration: 'none' }}>
+              <Link to={`/Proyecto-4/${page.toLowerCase()}`} key={page} style={{ textDecoration: 'none' }}>
                 <Button onClick={handleCloseNavMenu} sx={{ my: 2, color: 'white', display: 'block' }}>
                   {page}
                 </Button>
