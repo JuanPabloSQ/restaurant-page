@@ -32,10 +32,10 @@ const Reserve = () => {
     name: yup.string().required('El nombre es obligatorio'),
     lastName: yup.string().required('El apellido es obligatorio'),
     mail: yup.string().email('Ingrese un correo electrónico válido').required('El correo electrónico es obligatorio'),
-    phone: yup.string().matches(/^\d+$/, 'Ingrese solo números').required('El teléfono es obligatorio'),
-    selectedPeople: yup.string().required('Seleccione el número de personas'),
-    selectedSmoke: yup.string().required('Seleccione la preferencia'),
-    selectedTime: yup.string().required('Seleccione la hora de la reserva'),
+    phone: yup.number().typeError('Ingrese solo números').required('El teléfono es obligatorio'),
+    selectedPeople: yup.number().typeError('Seleccione el número de personas').required('Seleccione el número de personas'),
+    selectedSmoke: yup.number().typeError('Seleccione la preferencia').required('Seleccione la preferencia'),
+    selectedTime: yup.number().typeError('Seleccione la hora de la reserva').required('Seleccione la hora de la reserva'),
   });
 
   const validateField = async (fieldName, value) => {
