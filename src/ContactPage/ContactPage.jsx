@@ -144,8 +144,8 @@ const ContactPage = () => {
             '& input': {
               color: 'white',
               '&:-webkit-autofill': {
-                '-webkit-text-fill-color': 'white',
-                '-webkit-box-shadow': '0 0 0px 1000px #333 inset',
+                'WebkitTextFillColor': 'white',
+                'WebkitBoxShadow': '0 0 0px 1000px #333 inset',
               },
             },
             '& label': {

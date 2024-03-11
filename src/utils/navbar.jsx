@@ -30,24 +30,23 @@ function NavBar() {
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <RamenDiningIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-          <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
-            <Typography
-              variant="h6"
-              noWrap
-              component="a"
-              sx={{
-                mr: 2,
-                display: { xs: 'none', md: 'flex' },
-                fontFamily: 'monospace',
-                fontWeight: 700,
-                letterSpacing: '.3rem',
-                color: 'inherit',
-                textDecoration: 'none',
-              }}
-            >
+          <Typography
+            variant="h6"
+            noWrap
+            sx={{
+              mr: 2,
+              display: { xs: 'none', md: 'flex' },
+              fontFamily: 'monospace',
+              fontWeight: 700,
+              letterSpacing: '.3rem',
+              color: 'inherit',
+              textDecoration: 'none',
+            }}
+          >
+            <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
               ZUTTO
-            </Typography>
-          </Link>
+            </Link>
+          </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
@@ -79,9 +78,9 @@ function NavBar() {
               }}
             >
               {pages.map((page) => (
-                <Link to={`/${page.toLowerCase()}`} key={page} style={{ textDecoration: 'none' }}>
-                  <MenuItem onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center">{page}</Typography>
+                <Link to={`/${page.toLowerCase()}`} key={page} style={{ textDecoration: 'none', color: 'inherit' }}>
+                  <MenuItem onClick={handleCloseNavMenu} sx={{ textAlign: 'center' }}>
+                    {page}
                   </MenuItem>
                 </Link>
               ))}
@@ -91,8 +90,6 @@ function NavBar() {
           <Typography
             variant="h5"
             noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
             sx={{
               mr: 2,
               display: { xs: 'flex', md: 'none' },

@@ -9,10 +9,16 @@ const BodyText = () => {
     Descubre quiénes somos desde adentro, conoce a nuestro talentoso equipo y déjate llevar por la historia que se cuenta a través de nuestros sabores. En cada bocado, encontrarás la autenticidad, la dedicación y la tradición que nos definen. Bienvenido a ZUTTO Restaurant, donde cada experiencia es un viaje a Japón, y cada plato cuenta una historia de sabor.
   `;
 
-  return (
-    <Typography variant="body1" color="white">
-      {text}
+  const paragraphs = text.split('\n').map((paragraph, index) => (
+    <Typography key={index} variant="body1" color="white">
+      {paragraph}
     </Typography>
+  ));
+
+  return (
+    <div>
+      {paragraphs}
+    </div>
   );
 };
 

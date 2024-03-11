@@ -17,6 +17,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { useSnackbar } from "../utils/SnackBarContext";
 import * as yup from 'yup';
+import 'dayjs/locale/es-us';
 
 const schema = yup.object({
   name: yup.string().required('El nombre es obligatorio'),
@@ -185,8 +186,8 @@ const Reserve = () => {
             '& input': {
               color: 'white',
               '&:-webkit-autofill': {
-                '-webkit-text-fill-color': 'white',
-                '-webkit-box-shadow': '0 0 0px 1000px #333 inset',
+                'WebkitTextFillColor': 'white',
+                'WebkitBoxShadow': '0 0 0px 1000px #333 inset',
               },
             },
             '& label': {
@@ -267,7 +268,7 @@ const Reserve = () => {
             />
           </Grid>
           <Grid item xs={12} sm={6}>
-            <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale='es-cl'>
+            <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale='es-us'>
               <DatePicker
                 label="Fecha"
                 format="DD-MM-YYYY"

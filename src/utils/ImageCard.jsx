@@ -6,7 +6,7 @@ import { CardActionArea } from '@mui/material';
 
 export default function ImageCard({ maxWidth, imageWidth, imageHeight, image, bodyText, titleText, bgc, colorText }) {
   return (
-    <Card sx={{ maxWidth: maxWidth, backgroundColor: bgc  }}>
+    <Card sx={{ maxWidth: maxWidth, backgroundColor: bgc }}>
       <CardActionArea>
         <CardMedia
           component="img"
@@ -18,8 +18,8 @@ export default function ImageCard({ maxWidth, imageWidth, imageHeight, image, bo
           <Typography gutterBottom variant="h5" component="div" color={colorText}>
             {titleText}
           </Typography>
-          <Typography variant="body2" color="text.secondary" >
-            {bodyText} 
+          <Typography variant="body2" color="text.secondary" component="div">
+            {bodyText}
           </Typography>
         </CardContent>
       </CardActionArea>
