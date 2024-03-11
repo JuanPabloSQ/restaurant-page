@@ -29,7 +29,7 @@ export default function BasicCard() {
         </Typography>
       </CardContent>
       <CardActions>
-        <Link to="/reserva" style={{ textDecoration: 'none' }}>
+        <Link to="/Proyecto-4/reserva" style={{ textDecoration: 'none' }}>
           <Button 
             variant="contained">
               Haz tu reserva
