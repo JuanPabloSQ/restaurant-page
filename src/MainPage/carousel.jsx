@@ -3,7 +3,6 @@ import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import MobileStepper from '@mui/material/MobileStepper';
 import Paper from '@mui/material/Paper';
-import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
@@ -16,22 +15,22 @@ const images = [
   {
     label: 'Ramen 1',
     imgPath:
-      'https://www.foodadvisor.my/attachments/6c71b37c7c9139472b6e9c4ce07ac8fd169c9a1a/store/fill/800/500/69a25ed154ed335532cc5a8c9ec1501840e617a59a941113a95a6c0f92eb/featured_image.jpg',
+      'https://d15k2d11r6t6rl.cloudfront.net/public/users/Integrators/8acbeec7-ece8-4e66-9ac5-d1a10a4369ba/test1-clientside/Singapore/Menya%20Aoi/Jan2024/festive-family-set-reward.jpg',
   },
   {
     label: 'Sushi 1',
     imgPath:
-      'https://img-us.didaudo.net/us-locations/US/000/002/2139/top-7-sushi-restaurants-in-brooklyn-heights-new-york-city.jpg',
+      'https://thehootleeds.com/wp-content/uploads/2021/10/Screenshot-2021-10-21-at-11.05.18-800x500.png',
   },
   {
     label: 'Sushi 2',
     imgPath:
-      'https://thehootleeds.com/wp-content/uploads/2021/10/Screenshot-2021-10-21-at-11.05.18-800x500.png',
+      'https://img-us.didaudo.net/us-locations/US/000/002/2139/top-7-sushi-restaurants-in-brooklyn-heights-new-york-city.jpg',
   },
   {
     label: 'Ramen 2',
     imgPath:
-      'https://d15k2d11r6t6rl.cloudfront.net/public/users/Integrators/8acbeec7-ece8-4e66-9ac5-d1a10a4369ba/test1-clientside/Singapore/Menya%20Aoi/Jan2024/festive-family-set-reward.jpg',
+      'https://www.foodadvisor.my/attachments/6c71b37c7c9139472b6e9c4ce07ac8fd169c9a1a/store/fill/800/500/69a25ed154ed335532cc5a8c9ec1501840e617a59a941113a95a6c0f92eb/featured_image.jpg',
   },
 ];
 
@@ -62,10 +61,10 @@ function Carousel() {
           alignItems: 'center',
           justifyContent: 'center',
           height: '20%', 
-          bgcolor: 'background.default',
+          bgcolor: 'black',
         }}
       >
-        <Typography variant="h5" sx={{fontFamily: "'Noto Sans Japanese', sans-serif"}}>{images[activeStep].label}</Typography>
+   
       </Paper>
       <AutoPlaySwipeableViews
         axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
@@ -98,6 +97,7 @@ function Carousel() {
         ))}
       </AutoPlaySwipeableViews>
       <MobileStepper
+        sx={{backgroundColor: 'black' }}
         steps={maxSteps}
         position="static"
         activeStep={activeStep}
@@ -109,7 +109,7 @@ function Carousel() {
           >
             Next
             {theme.direction === 'rtl' ? (
-              <KeyboardArrowLeft />
+              <KeyboardArrowLeft  />
             ) : (
               <KeyboardArrowRight />
             )}
@@ -131,3 +131,5 @@ function Carousel() {
 }
 
 export default Carousel;
+
+

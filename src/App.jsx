@@ -4,18 +4,26 @@ import MainPage from './MainPage/MainPage';
 import Menu from "./MenuPage/MenuPage";
 import Blog from "./BlogPage/BlogPage";
 import ContactPage from './ContactPage/ContactPage';
+import '@fontsource/noto-sans-jp/300.css';
+import '@fontsource/noto-sans-jp/400.css';
+import '@fontsource/noto-sans-jp/500.css';
+import '@fontsource/noto-sans-jp/700.css';
+import {ThemeProvider} from "@mui/material"
+import theme from "../src/utils/theme";
 
 function App() {
   return (
       <div>
-        <Routes>
-          <Route path="/" element={<MainPage />} />
-          <Route path="/Zutto" element={<MainPage />} />
-          <Route path="/reserva" element={<Reserve />} />
-          <Route path="/menu" element={<Menu />} />
-          <Route path="/conocenos" element={<Blog />} />
-          <Route path="/contactanos" element={<ContactPage/>} />
-        </Routes>
+        <ThemeProvider theme={theme}>
+          <Routes>
+            <Route path="/" element={<MainPage />} />
+            <Route path="/Zutto" element={<MainPage />} />
+            <Route path="/reserva" element={<Reserve />} />
+            <Route path="/menu" element={<Menu />} />
+            <Route path="/conocenos" element={<Blog />} />
+            <Route path="/contactanos" element={<ContactPage/>} />
+          </Routes>
+        </ThemeProvider>
       </div>
     
   );

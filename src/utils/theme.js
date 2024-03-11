@@ -1,9 +1,10 @@
+import { red } from '@mui/material/colors';
 import { createTheme } from '@mui/material/styles';
-import NotoSansJapanese from '@fontsource/noto-sans-jp';
 
 const theme = createTheme({
+  palette: {primary: {main:red.A700}},
   typography: {
-    fontFamily: 'Noto Sans Japanese, sans-serif',
+    fontFamily: "Noto Sans JP"
   },
 });
 
