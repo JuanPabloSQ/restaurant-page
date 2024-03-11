@@ -53,7 +53,7 @@ function Carousel() {
   };
 
   return (
-    <Box sx={{ maxWidth: 702, height: '60vh', flexGrow: 1 }}>
+    <Box sx={{ maxWidth: 702, height: '60vh', flexGrow: 1, }}>
       <Paper
         square
         elevation={0}
