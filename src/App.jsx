@@ -23,7 +23,7 @@ function App() {
               <Route path="/Proyecto-4/reserva" element={<Reserve />} />
               <Route path="/Proyecto-4/menu" element={<Menu />} />
               <Route path="/Proyecto-4/conocenos" element={<Blog />} />
-  <Route path="/Proyecto-4/contactanos" element={<ContactPage/>} /> 
+              <Route path="/Proyecto-4/contactanos" element={<ContactPage/>} /> 
             </Routes>
           </SnackbarContextProvider>
         </ThemeProvider>
