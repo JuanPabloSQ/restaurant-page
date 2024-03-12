@@ -9,15 +9,14 @@ import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import PeopleSelect from "../ReservePage/PeopleSelect";
-import TimeSelect from "../ReservePage/TimeSelect";
+import PeopleSelect from "./PeopleSelect";
+import TimeSelect from "./TimeSelect";
 import SmokeSelect from "./SmokeSelect";
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { useSnackbar } from "../utils/SnackBarContext";
 import * as yup from 'yup';
-import 'dayjs/locale/es-us';
 
 const schema = yup.object({
   name: yup.string().required('El nombre es obligatorio'),
