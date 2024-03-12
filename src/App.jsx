@@ -9,8 +9,8 @@ import '@fontsource/noto-sans-jp/400.css';
 import '@fontsource/noto-sans-jp/500.css';
 import '@fontsource/noto-sans-jp/700.css';
 import {ThemeProvider} from "@mui/material"
-import theme from "../src/utils/theme";
-import { SnackbarContextProvider } from "../src/utils/SnackBarContext"
+import theme from "./utils/theme";
+import { SnackbarContextProvider } from "./utils/SnackBarContext"
 
 function App() {
   return (
@@ -18,12 +18,12 @@ function App() {
         <ThemeProvider theme={theme}>
           <SnackbarContextProvider>
             <Routes>
-              <Route path="/Proyecto-4/" element={<MainPage />} />
-              <Route path="/Proyecto-4/inicio" element={<MainPage />} />
+              <Route path="/Proyecto-4/" element={<MainPage />} /> 
+              <Route path="/Proyecto-4/inicio" element={<MainPage />} /> 
               <Route path="/Proyecto-4/reserva" element={<Reserve />} />
               <Route path="/Proyecto-4/menu" element={<Menu />} />
               <Route path="/Proyecto-4/conocenos" element={<Blog />} />
-              <Route path="/Proyecto-4/contactanos" element={<ContactPage/>} />
+  <Route path="/Proyecto-4/contactanos" element={<ContactPage/>} /> 
             </Routes>
           </SnackbarContextProvider>
         </ThemeProvider>
