@@ -35,29 +35,31 @@ const Menu = () => {
   const renderCategorySection = (categoryTitle, categoryMenu) => {
     return (
       <div key={categoryTitle}>
-        <Typography variant="h4" color="primary" style={{ marginTop: '100px', marginBottom: '10px' }}>
-          {categoryTitle}
-        </Typography>
-        <Grid 
-          display="flex" 
-          justifyContent="center" 
-          alignItems="center"
-          container 
-          spacing={2} 
-          style={{ marginLeft: '10px', marginBottom: "50px" }} 
-        >
-          {categoryMenu.map((menuItem, index) => (
-            <Grid item key={index} xs={12} sm={6} md={4}>
-              <ImageCard
-                maxWidth={400}
-                imageHeight={200}
-                image={menuItem.image}
-                titleText={menuItem.titleText}
-                bodyText={menuItem.bodyText}
-              />
-            </Grid>
-          ))}
-        </Grid>
+        <Box sx={{ backgroundColor: 'black', minHeight: '100vh'}} >
+          <Typography variant="h4" color="primary" style={{ marginTop: '100px', marginBottom: '10px' }}>
+            {categoryTitle}
+          </Typography>
+          <Grid 
+            display="flex" 
+            justifyContent="center" 
+            alignItems="center"
+            container 
+            spacing={2} 
+            style={{ marginLeft: '10px', marginBottom: "50px" }} 
+          >
+            {categoryMenu.map((menuItem, index) => (
+              <Grid item key={index} xs={12} sm={6} md={4}>
+                <ImageCard
+                  maxWidth={400}
+                  imageHeight={200}
+                  image={menuItem.image}
+                  titleText={menuItem.titleText}
+                  bodyText={menuItem.bodyText}
+                />
+              </Grid>
+            ))}
+          </Grid>
+        </Box>
       </div>
     );
   };

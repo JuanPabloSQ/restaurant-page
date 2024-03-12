@@ -167,139 +167,141 @@ const Reserve = () => {
 
   return (
     <div>
-      <NavBar />
-      <Box
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-        sx={{ paddingLeft: '200px', paddingRight: '200px', marginTop: '120px' }}
-      >
-        <Grid
-          container
-          component="form"
-          spacing={2}
-          sx={{
-            backgroundColor: '#333',
-            borderRadius: '8px',
-            padding: '16px',
-            '& input': {
-              color: 'white',
-              '&:-webkit-autofill': {
-                'WebkitTextFillColor': 'white',
-                'WebkitBoxShadow': '0 0 0px 1000px #333 inset',
-              },
-            },
-            '& label': {
-              color: 'white',
-            },
-            '& fieldset': {
-              borderColor: 'white',
-            },
-          }}
+      <Box sx={{ backgroundColor: 'black', minHeight: '100vh'}} >
+        <NavBar />
+        <Box
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          sx={{ paddingLeft: '200px', paddingRight: '200px', marginTop: '120px' }}
         >
-          <Grid item xs={12} sx={{ marginBottom: '10px' }}>
-            <Typography variant="h5" color="white" align="center">
-              Reserva con nosotros
-            </Typography>
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              fullWidth
-              id="name"
-              label="Tu nombre"
-              variant="outlined"
-              value={name}
-              onChange={(e) => handleInputChange('name', e.target.value)}
-              error={!!formErrors.name}
-              helperText={formErrors.name}
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              fullWidth
-              id="lastName"
-              label="Tu apellido"
-              variant="outlined"
-              value={lastName}
-              onChange={(e) => handleInputChange('lastName', e.target.value)}
-              error={!!formErrors.lastName}
-              helperText={formErrors.lastName}
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              fullWidth
-              id="mail"
-              label="Email"
-              variant="outlined"
-              value={mail}
-              onChange={(e) => handleInputChange('mail', e.target.value)}
-              error={!!formErrors.mail}
-              helperText={formErrors.mail}
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              fullWidth
-              id="phone"
-              label="Teléfono"
-              variant="outlined"
-              value={phone}
-              onChange={(e) => handleInputChange('phone', e.target.value)}
-              error={!!formErrors.phone}
-              helperText={formErrors.phone}
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <PeopleSelect
-              value={selectedPeople}
-              onChange={(e) => handleInputChange('selectedPeople', e.target.value)}
-              error={!!formErrors.selectedPeople}
-              helperText={formErrors.selectedPeople}
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <SmokeSelect
-              value={selectedSmoke}
-              onChange={(e) => handleInputChange('selectedSmoke', e.target.value)}
-              error={!!formErrors.selectedSmoke}
-              helperText={formErrors.selectedSmoke}
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale='es-us'>
-              <DatePicker
-                label="Fecha"
-                format="DD-MM-YYYY"
-                value={selectedDate}
-                onChange={(date) => setSelectedDate(date)}
-                sx={{ width: '100%' }}
-                disablePast
-                slotProps={{
-                  textField: {
-                    error: !!formErrors.selectedDate,
-                    helperText: formErrors.selectedDate,
-                  },
-                }}
+          <Grid
+            container
+            component="form"
+            spacing={2}
+            sx={{
+              backgroundColor: '#333',
+              borderRadius: '8px',
+              padding: '16px',
+              '& input': {
+                color: 'white',
+                '&:-webkit-autofill': {
+                  'WebkitTextFillColor': 'white',
+                  'WebkitBoxShadow': '0 0 0px 1000px #333 inset',
+                },
+              },
+              '& label': {
+                color: 'white',
+              },
+              '& fieldset': {
+                borderColor: 'white',
+              },
+            }}
+          >
+            <Grid item xs={12} sx={{ marginBottom: '10px' }}>
+              <Typography variant="h5" color="white" align="center">
+                Reserva con nosotros
+              </Typography>
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                fullWidth
+                id="name"
+                label="Tu nombre"
+                variant="outlined"
+                value={name}
+                onChange={(e) => handleInputChange('name', e.target.value)}
+                error={!!formErrors.name}
+                helperText={formErrors.name}
               />
-            </LocalizationProvider>
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                fullWidth
+                id="lastName"
+                label="Tu apellido"
+                variant="outlined"
+                value={lastName}
+                onChange={(e) => handleInputChange('lastName', e.target.value)}
+                error={!!formErrors.lastName}
+                helperText={formErrors.lastName}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                fullWidth
+                id="mail"
+                label="Email"
+                variant="outlined"
+                value={mail}
+                onChange={(e) => handleInputChange('mail', e.target.value)}
+                error={!!formErrors.mail}
+                helperText={formErrors.mail}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                fullWidth
+                id="phone"
+                label="Teléfono"
+                variant="outlined"
+                value={phone}
+                onChange={(e) => handleInputChange('phone', e.target.value)}
+                error={!!formErrors.phone}
+                helperText={formErrors.phone}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <PeopleSelect
+                value={selectedPeople}
+                onChange={(e) => handleInputChange('selectedPeople', e.target.value)}
+                error={!!formErrors.selectedPeople}
+                helperText={formErrors.selectedPeople}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <SmokeSelect
+                value={selectedSmoke}
+                onChange={(e) => handleInputChange('selectedSmoke', e.target.value)}
+                error={!!formErrors.selectedSmoke}
+                helperText={formErrors.selectedSmoke}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale='es-us'>
+                <DatePicker
+                  label="Fecha"
+                  format="DD-MM-YYYY"
+                  value={selectedDate}
+                  onChange={(date) => setSelectedDate(date)}
+                  sx={{ width: '100%' }}
+                  disablePast
+                  slotProps={{
+                    textField: {
+                      error: !!formErrors.selectedDate,
+                      helperText: formErrors.selectedDate,
+                    },
+                  }}
+                />
+              </LocalizationProvider>
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TimeSelect
+                value={selectedTime}
+                onChange={(e) => handleInputChange('selectedTime', e.target.value)}
+                error={!!formErrors.selectedTime}
+                helperText={formErrors.selectedTime}
+              />
+            </Grid>
+            <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center', marginTop: '20px', marginBottom: "10px" }}>
+              <Button variant="contained" type="button" onClick={handleSubmit}>
+                Enviar
+              </Button>
+            </Grid>
           </Grid>
-          <Grid item xs={12} sm={6}>
-            <TimeSelect
-              value={selectedTime}
-              onChange={(e) => handleInputChange('selectedTime', e.target.value)}
-              error={!!formErrors.selectedTime}
-              helperText={formErrors.selectedTime}
-            />
-          </Grid>
-          <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center', marginTop: '20px', marginBottom: "10px" }}>
-            <Button variant="contained" type="button" onClick={handleSubmit}>
-              Enviar
-            </Button>
-          </Grid>
-        </Grid>
+        </Box>
+        <BoxFooter />
       </Box>
-      <BoxFooter />
     </div>
   );
 };
