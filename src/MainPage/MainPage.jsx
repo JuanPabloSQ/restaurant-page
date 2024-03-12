@@ -7,7 +7,7 @@ const MainPage = () => {
   const imageUrl = 'https://c4.wallpaperflare.com/wallpaper/70/192/37/greens-fish-figure-black-background-wallpaper-preview.jpg';
 
   return (
-    <Box>
+    <Box sx={{ backgroundColor: 'black', minHeight: '100vh'}}>
       <NavBar />
       <Box display="flex" justifyContent="space-between" alignItems="center" marginTop={10} p={2}>
         <BasicCard />
