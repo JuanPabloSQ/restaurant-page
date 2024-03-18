@@ -11,7 +11,7 @@ const MainPage = () => {
   return (
     <Box sx={{ backgroundColor: 'black'}}>
       <NavBar />
-      <Box display="flex" justifyContent="space-between" alignItems="center" marginTop={10} pl={5}>
+      <Box display="flex" justifyContent="space-between" alignItems="center" marginTop={10} pl={isMobile ? 0 : 5}>
         <BasicCard />
         {!isMobile && <img src={imageUrl} alt="Fish" style={{ width: '50%', marginRight: '20px' }} />}
       </Box>
