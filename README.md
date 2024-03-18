@@ -15,7 +15,7 @@ En cuanto a la interfaz de usuario, he optado por la biblioteca Material UI para
     git clone https://github.com/JuanPabloSQ/Proyecto-4
     ```
 
-2. **Entrar a la carpeta Proyecto-2 y ejecutar el archivo index.html**
+2. **Entrar a la carpeta Proyecto-4 y ejecutar el archivo index.html**
 
 
 ## Tecnologias utilizadas
