@@ -21,9 +21,9 @@ function App() {
               <Route path="/Proyecto-4/" element={<MainPage />} /> 
               <Route path="/Proyecto-4/inicio" element={<MainPage />} /> 
               <Route path="/Proyecto-4/reserva" element={<Reserve />} />
-              <Route path="/Proyecto-4/menu" element={<Menu />} />
+              <Route path="/Proyecto-4/menú" element={<Menu />} />
               <Route path="/Proyecto-4/conocenos" element={<Blog />} />
-              <Route path="/Proyecto-4/contactanos" element={<ContactPage/>} /> 
+              <Route path="/Proyecto-4/contáctanos" element={<ContactPage/>} /> 
             </Routes>
           </SnackbarContextProvider>
         </ThemeProvider>
