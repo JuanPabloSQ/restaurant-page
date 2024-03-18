@@ -46,7 +46,7 @@ const Menu = () => {
             spacing={2} 
             justifyContent="center"
             alignItems="stretch"
-            style={{ marginBottom: '100px', overflowX: 'hidden' }} // Ocultar desbordamiento horizontal
+            style={{ marginBottom: '100px', overflowX: 'hidden' }} 
           >
             {categoryMenu.map((menuItem, index) => (
               <Grid item key={index} xs={12} sm={6} md={4} style={{ maxWidth: '300px', margin: 'auto' }}>
@@ -76,7 +76,7 @@ const Menu = () => {
       {sushiMenu.length > 0 && renderCategorySection('Sushi:', sushiMenu)}
       {bebidaMenu.length > 0 && renderCategorySection('Bebidas:', bebidaMenu)}
       {otrosPlatosMenu.length > 0 && renderCategorySection('Otros Platos:', otrosPlatosMenu)}
-      {!isMobile && <BoxFooter />} {/* No mostrar BoxFooter en dispositivos móviles */}
+      {!isMobile && <BoxFooter />} 
     </Box>
   );
 };

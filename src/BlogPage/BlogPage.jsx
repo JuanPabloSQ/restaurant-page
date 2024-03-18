@@ -6,7 +6,7 @@ import BoxFooter from "../utils/BoxFooter";
 import { useMediaQuery } from '@mui/material';
 
 const Blog = () => {
-  const isMobile = useMediaQuery('(max-width:600px)'); // Define el ancho máximo para dispositivos móviles
+  const isMobile = useMediaQuery('(max-width:600px)'); 
 
   return (
     <div>
@@ -18,7 +18,7 @@ const Blog = () => {
           maxWidth="100%"
           display="flex"
           justifyContent="center"
-          flexDirection={isMobile ? 'column' : 'row'} // Cambia la dirección del flexbox en dispositivos móviles
+          flexDirection={isMobile ? 'column' : 'row'}
           alignItems="center"
           marginTop={10}
           flex="1"
@@ -29,14 +29,14 @@ const Blog = () => {
             bgc="black"
             p={2}
             maxWidth="100%"
-            imageWidth={isMobile ? 500 : 1400} // Ajusta el ancho de la imagen para dispositivos móviles
+            imageWidth={isMobile ? 500 : 1400} 
             imageHeight={300}
             titleText="ZUTTO Restaurant - Un Viaje a Japón en Cada Bocado"
             colorText="white"
             bodyText={<BodyText />}
             image="https://tofuu.getjusto.com/orioneat-prod/fjzscSzZyeC5FWPvg-56%20mix.jpeg"
           />
-          {!isMobile && <BoxFooter />} {/* Oculta el BoxFooter en dispositivos móviles */}
+          {!isMobile && <BoxFooter />} 
         </Box>
       </Box>
     </div>

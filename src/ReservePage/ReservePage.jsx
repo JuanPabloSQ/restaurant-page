@@ -176,7 +176,10 @@ const Reserve = () => {
           display="flex"
           justifyContent="center"
           alignItems="center"
-          sx={{ paddingLeft: isMobile ? '20px' : '200px', paddingRight: isMobile ? '10px' : '200px', marginTop: '120px', marginBottom: isMobile ? '40px' : '0px' }}
+          sx={{ paddingLeft: isMobile ? '20px' : '200px', 
+          paddingRight: isMobile ? '10px' : '200px', 
+          marginTop: '120px', 
+          marginBottom: isMobile ? '40px' : '0px' }}
         >
           <Grid
             container
@@ -296,7 +299,10 @@ const Reserve = () => {
                 helperText={formErrors.selectedTime}
               />
             </Grid>
-            <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center', marginTop: '20px', marginBottom: "10px" }}>
+            <Grid item xs={12} sx={{ display: 'flex', 
+              justifyContent: 'center', 
+              marginTop: '20px', 
+              marginBottom: "10px" }}>
               <Button variant="contained" type="button" onClick={handleSubmit}>
                 Enviar
               </Button>
