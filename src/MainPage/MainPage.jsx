@@ -6,12 +6,12 @@ import { useMediaQuery } from '@mui/material';
 
 const MainPage = () => {
   const imageUrl = 'https://c4.wallpaperflare.com/wallpaper/70/192/37/greens-fish-figure-black-background-wallpaper-preview.jpg';
-  const isMobile = useMediaQuery('(max-width:600px)'); // Define el ancho máximo para dispositivos móviles
+  const isMobile = useMediaQuery('(max-width:600px)'); 
 
   return (
     <Box sx={{ backgroundColor: 'black'}}>
       <NavBar />
-      <Box display="flex" justifyContent="space-between" alignItems="center" marginTop={10} p={2}>
+      <Box display="flex" justifyContent="space-between" alignItems="center" marginTop={10} pl={5}>
         <BasicCard />
         {!isMobile && <img src={imageUrl} alt="Fish" style={{ width: '50%', marginRight: '20px' }} />}
       </Box>

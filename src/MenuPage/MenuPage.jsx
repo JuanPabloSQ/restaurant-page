@@ -42,17 +42,15 @@ const Menu = () => {
             {categoryTitle}
           </Typography>
           <Grid 
-            display="flex" 
-            justifyContent="center" 
-            alignItems="center"
             container 
             spacing={2} 
-            style={{ marginLeft: '10px', marginBottom: "50px" }} 
+            justifyContent="center"
+            alignItems="stretch"
+            style={{ marginBottom: '100px', overflowX: 'hidden' }} // Ocultar desbordamiento horizontal
           >
             {categoryMenu.map((menuItem, index) => (
-              <Grid item key={index} xs={12} sm={6} md={4}>
+              <Grid item key={index} xs={12} sm={6} md={4} style={{ maxWidth: '300px', margin: 'auto' }}>
                 <ImageCard
-                  maxWidth={400}
                   imageHeight={200}
                   image={menuItem.image}
                   titleText={menuItem.titleText}
@@ -73,16 +71,12 @@ const Menu = () => {
 
   return (
     <Box>
-      <Grid>
-        <NavBar />
-      </Grid>
-
+      <NavBar />
       {ramenMenu.length > 0 && renderCategorySection('Ramen:', ramenMenu)}
       {sushiMenu.length > 0 && renderCategorySection('Sushi:', sushiMenu)}
       {bebidaMenu.length > 0 && renderCategorySection('Bebidas:', bebidaMenu)}
       {otrosPlatosMenu.length > 0 && renderCategorySection('Otros Platos:', otrosPlatosMenu)}
-
-      {!isMobile && <BoxFooter />}
+      {!isMobile && <BoxFooter />} {/* No mostrar BoxFooter en dispositivos móviles */}
     </Box>
   );
 };

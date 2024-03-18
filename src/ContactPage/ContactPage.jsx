@@ -35,7 +35,7 @@ const ContactPage = () => {
     comments: '',
   });
 
-  const isMobile = useMediaQuery('(max-width:600px)'); // Verifica si es un dispositivo móvil
+  const isMobile = useMediaQuery('(max-width:600px)'); 
 
   const validateField = (name, value) => {
     try {
@@ -135,7 +135,7 @@ const ContactPage = () => {
           display="flex"
           justifyContent="center"
           alignItems="center"
-          sx={{ paddingLeft: '20px', paddingRight: '20px', marginTop: isMobile ? '100px' : '50px' }} // Margen adicional para dispositivos móviles
+          sx={{ paddingLeft: isMobile ? '20px': "200px", paddingRight: isMobile ? '20px': "200px", marginTop: isMobile ? '100px' : '150px' }} 
         >
           <Grid
             container

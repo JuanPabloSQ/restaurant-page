@@ -176,7 +176,7 @@ const Reserve = () => {
           display="flex"
           justifyContent="center"
           alignItems="center"
-          sx={{ paddingLeft: isMobile ? '20px' : '200px', paddingRight: isMobile ? '20px' : '200px', marginTop: '120px', marginBottom: isMobile ? '40px' : '0px' }}
+          sx={{ paddingLeft: isMobile ? '20px' : '200px', paddingRight: isMobile ? '10px' : '200px', marginTop: '120px', marginBottom: isMobile ? '40px' : '0px' }}
         >
           <Grid
             container
