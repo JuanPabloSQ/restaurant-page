@@ -175,6 +175,7 @@ const ContactPage = () => {
                 onChange={(e) => handleInputChange('name', e.target.value)}
                 error={!!formErrors.name}
                 helperText={formErrors.name}
+                InputProps={{ style: { color: 'white' } }} // Color de texto blanco
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -187,6 +188,7 @@ const ContactPage = () => {
                 onChange={(e) => handleInputChange('lastName', e.target.value)}
                 error={!!formErrors.lastName}
                 helperText={formErrors.lastName}
+                InputProps={{ style: { color: 'white' } }} // Color de texto blanco
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -199,6 +201,7 @@ const ContactPage = () => {
                 onChange={(e) => handleInputChange('email', e.target.value)}
                 error={!!formErrors.email}
                 helperText={formErrors.email}
+                InputProps={{ style: { color: 'white' } }} // Color de texto blanco
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -211,6 +214,7 @@ const ContactPage = () => {
                 onChange={(e) => handleInputChange('phone', e.target.value)}
                 error={!!formErrors.phone}
                 helperText={formErrors.phone}
+                InputProps={{ style: { color: 'white' } }} // Color de texto blanco
               />
             </Grid>
             <Grid item xs={12}>
@@ -225,6 +229,7 @@ const ContactPage = () => {
                 onChange={(e) => handleInputChange('comments', e.target.value)}
                 error={!!formErrors.comments}
                 helperText={formErrors.comments}
+                InputProps={{ style: { color: 'white' } }} // Color de texto blanco
               />
             </Grid>
             <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center', marginTop: '16px' }}>

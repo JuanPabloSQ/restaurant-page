@@ -74,10 +74,10 @@ const Menu = () => {
   return (
     <Box>
       <NavBar />
-      {ramenMenu.length > 0 && renderCategorySection('Ramen:', ramenMenu)}
-      {sushiMenu.length > 0 && renderCategorySection('Sushi:', sushiMenu)}
-      {bebidaMenu.length > 0 && renderCategorySection('Bebidas:', bebidaMenu)}
-      {otrosPlatosMenu.length > 0 && renderCategorySection('Otros Platos:', otrosPlatosMenu)}
+      {ramenMenu.length > 0 && renderCategorySection('Ramen', ramenMenu)}
+      {sushiMenu.length > 0 && renderCategorySection('Sushi', sushiMenu)}
+      {bebidaMenu.length > 0 && renderCategorySection('Bebidas', bebidaMenu)}
+      {otrosPlatosMenu.length > 0 && renderCategorySection('Otros Platos', otrosPlatosMenu)}
       {!isMobile && <BoxFooter />} 
     </Box>
   );
