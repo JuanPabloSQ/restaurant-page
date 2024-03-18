@@ -7,9 +7,11 @@ import Grid from '@mui/material/Grid';
 import BoxFooter from '../utils/BoxFooter';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import { useMediaQuery } from '@mui/material';
 
 const Menu = () => {
   const [menu, setMenu] = useState([]);
+  const isMobile = useMediaQuery('(max-width:600px)');
 
   const menuCollectionRef = collection(db, "menu");
 
@@ -80,7 +82,7 @@ const Menu = () => {
       {bebidaMenu.length > 0 && renderCategorySection('Bebidas:', bebidaMenu)}
       {otrosPlatosMenu.length > 0 && renderCategorySection('Otros Platos:', otrosPlatosMenu)}
 
-      <BoxFooter />
+      {!isMobile && <BoxFooter />}
     </Box>
   );
 };

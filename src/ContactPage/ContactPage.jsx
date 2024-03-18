@@ -9,6 +9,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { useSnackbar } from "../utils/SnackBarContext";
+import { useMediaQuery } from '@mui/material';
 import * as yup from 'yup';
 
 const schema = yup.object({
@@ -33,6 +34,8 @@ const ContactPage = () => {
     phone: '',
     comments: '',
   });
+
+  const isMobile = useMediaQuery('(max-width:600px)'); // Verifica si es un dispositivo móvil
 
   const validateField = (name, value) => {
     try {
@@ -111,7 +114,7 @@ const ContactPage = () => {
       clearForm();
     } catch (error) {
       if (error.name === 'ValidationError') applyFormErrors(error); 
-        errorSnackbar('Error con el servidor');
+        errorSnackbar('Error al enviar datos');
         console.error("Error de validación:", error.errors);
     }
   };
@@ -132,7 +135,7 @@ const ContactPage = () => {
           display="flex"
           justifyContent="center"
           alignItems="center"
-          sx={{ paddingLeft: '200px', paddingRight: '200px', marginTop: '150px' }}
+          sx={{ paddingLeft: '20px', paddingRight: '20px', marginTop: isMobile ? '100px' : '50px' }} // Margen adicional para dispositivos móviles
         >
           <Grid
             container
@@ -162,7 +165,7 @@ const ContactPage = () => {
                 Contáctanos
               </Typography>
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={12} sm={6}>
               <TextField
                 fullWidth
                 id="name"
@@ -174,7 +177,7 @@ const ContactPage = () => {
                 helperText={formErrors.name}
               />
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={12} sm={6}>
               <TextField
                 fullWidth
                 id="lastName"
@@ -186,7 +189,7 @@ const ContactPage = () => {
                 helperText={formErrors.lastName}
               />
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={12} sm={6}>
               <TextField
                 fullWidth
                 id="email"
@@ -198,7 +201,7 @@ const ContactPage = () => {
                 helperText={formErrors.email}
               />
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={12} sm={6}>
               <TextField
                 fullWidth
                 id="phone"
@@ -231,7 +234,7 @@ const ContactPage = () => {
             </Grid>
           </Grid>
         </Box>
-        <BoxFooter />
+        {!isMobile && <BoxFooter />}
       </Box>
     </div>
   );

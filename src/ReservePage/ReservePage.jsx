@@ -16,6 +16,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { useSnackbar } from "../utils/SnackBarContext";
+import { useMediaQuery } from '@mui/material';
 import * as yup from 'yup';
 
 const schema = yup.object({
@@ -49,6 +50,8 @@ const Reserve = () => {
     selectedTime: '',
     selectedDate: '',
   });
+
+  const isMobile = useMediaQuery('(max-width:600px)');
 
   const validateField = (name, value) => {
     try {
@@ -173,7 +176,7 @@ const Reserve = () => {
           display="flex"
           justifyContent="center"
           alignItems="center"
-          sx={{ paddingLeft: '200px', paddingRight: '200px', marginTop: '120px' }}
+          sx={{ paddingLeft: isMobile ? '20px' : '200px', paddingRight: isMobile ? '20px' : '200px', marginTop: '120px', marginBottom: isMobile ? '40px' : '0px' }}
         >
           <Grid
             container
@@ -300,7 +303,7 @@ const Reserve = () => {
             </Grid>
           </Grid>
         </Box>
-        <BoxFooter />
+        {!isMobile && <BoxFooter />}
       </Box>
     </div>
   );
