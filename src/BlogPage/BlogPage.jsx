@@ -7,8 +7,8 @@ import BoxFooter from "../utils/BoxFooter";
 const Blog = () => {
   return (
     <div>
-      <Box sx={{ backgroundColor: 'black', minHeight: '100vh'}} >
-        <Box width="100%" >
+      <Box sx={{ backgroundColor: 'black'}}>
+        <Box width="100%">
           <NavBar />
         </Box>
         <Box
@@ -23,15 +23,15 @@ const Blog = () => {
             textColor="white"
             bgc="black"
             p={2}
-            maxWidth="100%" 
+            maxWidth="100%"
             imageWidth={1400}
-            imageHeight={300} 
+            imageHeight={300}
             titleText="ZUTTO Restaurant - Un Viaje a Japón en Cada Bocado"
             colorText="white"
             bodyText={<BodyText />}
             image="https://tofuu.getjusto.com/orioneat-prod/fjzscSzZyeC5FWPvg-56%20mix.jpeg"
           />
-          <BoxFooter/>
+          <BoxFooter />
         </Box>
       </Box>
     </div>

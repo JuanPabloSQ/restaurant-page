@@ -126,7 +126,7 @@ const ContactPage = () => {
 
   return (
     <div>
-      <Box sx={{ backgroundColor: 'black', minHeight: '100vh'}}>
+      <Box sx={{ backgroundColor: 'black' }}>
         <NavBar />
         <Box
           display="flex"
