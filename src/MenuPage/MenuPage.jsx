@@ -38,7 +38,9 @@ const Menu = () => {
     return (
       <div key={categoryTitle}>
         <Box sx={{ backgroundColor: 'black'}} >
-          <Typography variant="h4" color="primary" style={{ marginTop: '100px', marginBottom: '10px' }}>
+          <Typography variant="h4" 
+            color="primary" 
+            style={{ marginTop: '100px', marginBottom: '10px' }}>
             {categoryTitle}
           </Typography>
           <Grid 
