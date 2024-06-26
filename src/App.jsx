@@ -18,12 +18,12 @@ function App() {
         <ThemeProvider theme={theme}>
           <SnackbarContextProvider>
             <Routes>
-              <Route path="/Proyecto-4/" element={<MainPage />} /> 
-              <Route path="/Proyecto-4/inicio" element={<MainPage />} /> 
-              <Route path="/Proyecto-4/reserva" element={<Reserve />} />
-              <Route path="/Proyecto-4/menú" element={<Menu />} />
-              <Route path="/Proyecto-4/conocenos" element={<Blog />} />
-              <Route path="/Proyecto-4/contáctanos" element={<ContactPage/>} /> 
+              <Route path="/restaurant-page/" element={<MainPage />} /> 
+              <Route path="/restaurant-page/inicio" element={<MainPage />} /> 
+              <Route path="/restaurant-page/reserva" element={<Reserve />} />
+              <Route path="/restaurant-page/menú" element={<Menu />} />
+              <Route path="/restaurant-page/conocenos" element={<Blog />} />
+              <Route path="/restaurant-page/contáctanos" element={<ContactPage/>} /> 
             </Routes>
           </SnackbarContextProvider>
         </ThemeProvider>
